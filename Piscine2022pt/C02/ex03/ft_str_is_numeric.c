@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_interative_factorial.c                          :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 13:18:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/02/02 13:18:18 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/30 19:09:38 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/01/30 21:32:31 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_iterative_factorial(int nb)
+int	ft_str_is_numeric(char *str)
 {
 	int	value;
 
 	value = 1;
-	if (nb < 1 || nb > 12)
-		return (0);
-	while (nb > 1)
+	while (*str)
 	{
-		value *= nb;
-		--nb;
+		if (*str > 47 && *str < 58)
+		++str;
+		else
+		{
+			value = 0;
+			break ;
+		}
 	}
 	return (value);
 }
-
-/* int	main(void)
-{
-	int n;
-
-	n = -2;
-	while (n < 15)
-	{
-		printf("fact(%d) = %d\n", n, ft_iterative_factorial(n));
-		n++;
-	}
-} */

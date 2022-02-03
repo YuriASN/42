@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 02:49:56 by marvin            #+#    #+#             */
-/*   Updated: 2022/02/02 02:49:56 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/30 18:21:02 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/01/31 03:04:12 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
-void	ft_putstr(char *str)
+int	ft_str_is_alpha(char *str)
 {
+	int	value;
+
+	value = 1;
 	while (*str)
 	{
-		write (1, str, 1);
+		if (*str > 64 && *str < 91)
 		++str;
+		else if (*str > 96 && *str < 123)
+		++str;
+		else
+		{
+			value = 0;
+			break ;
+		}
 	}
+	return (value);
 }
-
-/* int		main(void)
-{
-	char *str;
-
-	str = "Hello World";
-	ft_putstr(str);
-} */

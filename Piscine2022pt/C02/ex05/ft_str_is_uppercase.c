@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 02:46:14 by marvin            #+#    #+#             */
-/*   Updated: 2022/02/02 02:46:14 by marvin           ###   ########.fr       */
+/*   Created: 2022/01/30 21:53:43 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/01/30 21:56:29 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <string.h>
 
-int	ft_strlen(char *str)
+int	ft_str_is_uppercase(char *str)
 {
-	int	count;
+	int	value;
 
-	count = 0;
-	while (str[count])
-		++count;
-	return (count);
+	value = 1;
+	while (*str)
+	{
+		if (*str > 64 && *str < 91)
+		++str;
+		else
+		{
+			value = 0;
+			break ;
+		}
+	}
+	return (value);
 }
-
-/* int	main(void)
-{
-	char *str;
-
-	str = "Hello swimmer.";
-	printf("c  : %d\n", strlen(str));
-	printf("ft : %d\n", ft_strlen(str));
-} */
