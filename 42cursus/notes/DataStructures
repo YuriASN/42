@@ -1,0 +1,57 @@
+TYPEDEF
+
+typedef int* pointerparaint; 	//pointerparaint = int*
+								typedef e' parecido com o DEFINE mas pode ser utilizado dentro de funcoes.
+								typdefS de pointer fara de todas as variaveis separadas por "," um pointer,
+								no caso do DEFINE ela fara' apenas a primeira variavel um pointer e o restante int.
+								ex.: typedef char* charp; | cahrp a, b, c; (a b e c sao pointers).
+									 #define charp char* | cahrp a, b, c; (a e' pointer mas b e c nao).
+
+
+STRUCTs
+
+typedef + struct. // na hora de decalrar o nome do tipo da estrutura se torna resumido. ex.:
+	typedef struct	s_point
+	{
+		int x;
+		int y;
+	}				t_point;
+
+	int	main(void)
+	{
+		t_point a;
+		t_point b;
+		...
+	}
+	//Declarei a e b como estruturas s_point. reduzi o usual "struct s_point a;" para t_point a;
+
+pointer de struct
+	Para indicar a varialvel dentro com um pointer de uma struct utiliza-se "->", ex.:
+		pointer->x = 10; //A variavel X da estrutura para qual o pointer aponta e' igual a 10
+
+
+ENUM
+
+os valores das variaveis de enum sao sempre +1 que a variavel anterior.
+Se valores nao forem definidos a primeira variavel tem o valor de 0;
+ex.:
+enum	e_list
+{
+	value1 = 7;
+	value2;
+	value3;
+	value4;
+};
+
+int	main(void)
+{
+	enum e_list a; //Cria a variavel a, que trabalha pelo valor da lista.
+
+	a = value3;	//Da o valor de value 3 (9) a variavel a.
+}
+
+
+UNION
+
+
+https://www.youtube.com/watch?v=iiyjeAPeHN8

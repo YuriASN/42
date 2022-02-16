@@ -19,11 +19,3 @@ libraries:
 ar rc "nomedalib.a" "FUNCOES.O" "funcao2.o" //cria a lib com as fucoes indicadas.
 
 ranlib "sualib.a" //cria um index das funcoes da su lib. Torna a compilacao mais rapida por ser mais facil encontrar a funcao desejada.
-
-
-INCLUDE
-
-#include //tem de colocar o # antes para mostrar que eh algo pre-processamento
-#include <> //<> inclui arquivos do caminho do ambiente de sistema do stdio.h.
-#include "" //"" inclui arquivos na pasta do proprio arquivo c
-#includd
