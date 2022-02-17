@@ -52,6 +52,35 @@ int	main(void)
 
 
 UNION
-
-
 https://www.youtube.com/watch?v=iiyjeAPeHN8
+A UNION e' basicamente uma STRUCT. A diferenca esta' na alocacao de memoria.
+Uma struct aloca memoria para todos elementos nela,
+enquando a UNION aloca apenas memoria suficiente para cobrir o maior elemento. ex.:
+{
+	int a;		//4 bytes
+	char c;		//1 byte
+	float b;	//4 bytes
+};
+
+Caso o exemplo acima seja declarado como STRUCT ele alocara' 9 bytes na memoria para cobrir todos itens.
+No caso da UNION ela alocara' apenas 4, que e' o maior valor presente.
+
+A UNION e' boa para usar pouca memoria, mas dece ser utilizada apenas quando for definir apenas uma das variaveis.
+Se voce der um valor a 'a' e depois um valor a 'b', o valor de b ira' sobrepor o valor de 'a'.
+
+Com a union tambem pode-se fazer operacoes byte a byte. ex.:
+union	tipo
+{
+	short int		x;						//8 bytes
+	unsigned char	c[4];		//1 byte
+};
+
+..main..
+{
+	union tipo a;
+	a.x = 1545;						//00000110 00001001
+	printf("x = %d\n", a.x);
+	printf("c[0] = %d\n", a.c[0]);	//00000110
+	printf("c[1] = %d\n", a.c[1]);	//00001001
+		//note que ao dar printf dos chars o indicador utilizado foi o "%d" pois procuramos no valor do char uma int.
+}
