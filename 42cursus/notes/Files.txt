@@ -1,0 +1,31 @@
+OPEN files
+
+funcao "open":
+int	open(cahr *path, int flags [, mode_t perm]);
+ela recebe o caminho do arquivo, as flags	O_RDONLY = apenas ler
+											O_WRONLY  =  apenas escreve
+											O_RDWR	  = le e escreve
+e por fim as permissoes.
+
+ex.:
+int	x;
+
+x = open("file", O_RDONLY);							//abri o arquivo no modo de apenas ler.
+
+Importante de quando abrir e' colocar o codigo abaixo para o caso do Open dar erro.
+	if ("variavel que usou open" == -1)
+	{
+		ft_putstr("Open () failed\n");
+		return (1);
+	}
+
+CLOSE files
+
+func close.
+depois das funcoes necessarias use a func para fechar. ex.:
+	if (close("variavel que usou open") == -1)
+	{
+		ft_putstr("closed() failed \n");
+		return(1);
+	}
+

@@ -1,0 +1,57 @@
+MAKEFILE
+
+make 			//comando do makefile
+make clean		//
+
+
+Rules
+Regras são shell scripts executados antes da compilação.
+O nome do arquivo com as regras deve-se chamar "Makefile".
+Dentro dele nós nomeamos uma regra e aseguir dizemos o que ela deve executar. ex.:
+{
+PUT 42 HEADER
+
+regra_a:					//defini um nome para a regra.
+	echo "Regra A."			//executei um script na regra.
+
+regra_b: regra_a			//defini o nome e disse que a regra_a deve ser executada antes da atual.
+	echo "Regra B"			//executei o script depois da regra_a ter sido executada.t
+							//O comando do script é mostrado na tela. Para não o exibir basta
+							colocar um @ antes "@echo "Nao aparece o comando""
+}
+...>make regra_b			//comando para rodar o Makefile com a regra_b
+							//Se nao for apresentada nenhuma regra, a primeira regra do arquivo sera executada
+
+
+VARIAVEIS
+Variaveis no Makefile tem de ser escrita com CAPS, faz parte da norma.
+{
+PUT 42 HEADER
+
+VARIAVEL = "42 é do caralho!"
+
+regra_a;
+	echo $(VARIAVEL)		//Para chamar uma variavel usa-se $ seguido do nome dela entre ()
+}
+
+**Exemplo Util**
+{
+42 HEADER
+
+NAME = myprogram						//Nome do executavel.
+
+SRC = main.c function.c etc.c			//todos os arquivos que forem ser compilados.
+
+all: $(NAME)							//Regra "all" que roda a regra NAME
+
+$(NAME):								//Regra NAME
+	gcc -o %(NAME) $(SRC)
+
+clean:
+	/bin/rm -f $ *.O					//Remove todos arquivos .o (Restos da compilacao)
+
+fclean: clean							//Roda a regra clean
+	/bin/rm -f $(NAME)					//remove o arquivo executavel (Assim fica de volta a antes de compilar)
+
+re: fclean all							//remove tudo e recompila
+}
