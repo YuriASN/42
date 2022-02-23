@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-Todos os exercicios aqui apresentados foram aceites pela Moulinette. (por mais incrivel que pareca).
+Nem os exercicios aqui apresentados foram aceites pela Moulinette. :rofl:
 
 Keep swimming!
