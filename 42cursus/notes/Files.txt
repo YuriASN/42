@@ -1,3 +1,5 @@
+Todas as funcoes dao RETURN de -1 em caso de erro
+
 OPEN files
 
 funcao "open":
@@ -13,7 +15,7 @@ int	x;
 x = open("file", O_RDONLY);							//abri o arquivo no modo de apenas ler.
 
 Importante de quando abrir e' colocar o codigo abaixo para o caso do Open dar erro.
-	if ("variavel que usou open" == -1)
+	if ("variavel que usou open" == -1)		//Variavel normalmente tem o nome de "fd" (File Descriptor)
 	{
 		ft_putstr("Open () failed\n");
 		return (1);
@@ -29,3 +31,53 @@ depois das funcoes necessarias use a func para fechar. ex.:
 		return(1);
 	}
 
+
+WRITE
+
+Usa-se a funcao write para escrever no arquivo que foi aberto. No lugar do 1 (stdout) coloca a variavel
+que abriu o arquivo
+
+void	ft_putchar(int fd, char c)
+{
+	write(fd, &c, 1);				//colocou o caractere de "c" em "fd" (File Descriptor)
+}
+	Para escrever a partir do fim do arquivo e' necessario usar a flag O_APPEND.
+	Caso contrario o que ja existe sera sobrescrito.
+
+Dica para write em str:
+write(1, str, ft_strlen(str));			//imprime toda a linha usando a funcao de contar caracteres.
+
+
+READ
+
+A funcão read retorna a quantidade de caracteres de um arquivo e coloca esse arquivo em um buffer
+"...read(fd, buffer, BUF_SIZE)" buffer e' a str que vai receber os dados do fd e BUF_SIZE (malloc) e' o tamanho dela.
+
+size_file = read(fd, buf, BUF_SIZE);		//vai salvar o conteudo do fd em buf e dar o tamanho a size_file.
+buf[size_file] = '\0';						//finaliza o buf com \0 no fim do buffer.
+	Posso agora dar um ft_putstr no buf para ver o conteudo ou ft_putnbr no size_file para ver o seu tamanho.
+No caso de nao saber o tamnho do arquivo deve-se criar um loop em read.
+
+while(size_file = read(fd, buf, BUF_SIZE))
+{
+	buf[size_file] = '\0';
+	ft_putstr(buf);
+	full_size += size_file;		//aqui vai armazenando o size ate acabar o while.
+}
+
+
+LSEEK
+
+lseek serve para andar pelo arquivo. Basicamente a posicao do cursor.
+Flags:
+SEEK_SET = irá para o byte definido.
+SEEK_CUR = irá para o byte definido + o atual.
+SEEK_END = irá para o byte definido + o ultimo byte.
+ex.:
+while(size_file = read(fd, buf, BUF_SIZE))
+{
+	buf[size_file] = '\0';
+	ft_putstr(buf);
+	lseek(fd, -9, SEEK_END);		//cada vez que o ciclo correr ele reiniciara faltando 9 bytes
+									//para o fim. Ciclo infinito.
+}
