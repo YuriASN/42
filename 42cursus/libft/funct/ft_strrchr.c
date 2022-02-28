@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 22:13:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/02/24 22:13:24 by ysantos-         ###   ########.fr       */
+/*   Created: 2022/02/27 19:32:38 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/02/27 19:32:38 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	bzero(void *s, size_t bytes)
-{
-	int	index;
+#include "libft.h"
 
-	index = 0;
-	while (index < bytes)
-		((unsigned char *)s)[index++] = '\0';
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = ft_strlen(s) - 1;
+	while (i >= 0)
+	{
+		if (s[i] == (const char)c)
+			return (&((char *)s)[i]);
+		--i;
+	}
+	return (0);
 }
