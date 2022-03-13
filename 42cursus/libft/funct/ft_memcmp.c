@@ -6,16 +6,23 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:53:25 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/02/27 14:53:25 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/13 18:32:35 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* compares the first n bytes of memory area str1 and memory area str2.
+if Return value < 0 then it indicates str1 is less than str2.
+if Return value > 0 then it indicates str2 is less than str1.
+if Return value = 0 then it indicates str1 is equal to str2.*/
+
+#include "libft.h"
+
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	int	index;
+	size_t	index;
 
 	index = 0;
-	while (index < n)
+	while (index < n && str1 && str2)
 	{
 		if (((unsigned char *)str1)[index] != ((unsigned char *)str2)[index])
 			return (((char *)str1)[index] - ((char *)str2)[index]);
@@ -23,3 +30,19 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	}
 	return (0);
 }
+
+/* int	main(void)
+{
+	char	str1[15] = "abCdef";
+	char	str2[15] = "abcdEF";
+	int		ret;
+
+	ret = ft_memcmp(str1, str2, 6);
+	if (ret > 0)
+		printf("str2 is less than str1\n");
+	else if (ret < 0)
+		printf("str1 is less than str2\n");
+	else
+		printf("str1 is equal to str2\n");
+	return (0);
+} */

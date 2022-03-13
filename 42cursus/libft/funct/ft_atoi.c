@@ -6,9 +6,14 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 21:43:11 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/02/24 21:43:11 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/13 17:47:43 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+/* This function returns the converted integral number as an int value.
+If no valid conversion could be performed, it returns zero. */
 
 int	ft_atoi(const char *str)
 {
@@ -33,3 +38,16 @@ int	ft_atoi(const char *str)
 	}
 	return (nbr * sign);
 }
+
+/* int	main(void)
+{
+	int		val;
+	char	str[20] = "98993489as";
+	char	str1[20] = "profile.intra.42.fr";
+
+	val = ft_atoi(str);
+	printf("String value = %s, Int value = %d\n", str, val);
+	val = atoi(str1);
+	printf("String value = %s, Int value = %d\n", str1, val);
+	return (0);
+} */

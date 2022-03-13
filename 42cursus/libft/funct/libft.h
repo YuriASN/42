@@ -6,14 +6,18 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 21:46:45 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/02/27 21:46:45 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/13 19:39:52 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-int		ft_strlen(char *str);
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+
+size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strrchr(const char *s, int c);
@@ -38,5 +42,8 @@ int		ft_toupper(int x);
 
 void	ft_bzero(void *s, size_t bytes);
 int		ft_atoi(const char *str);
+
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
