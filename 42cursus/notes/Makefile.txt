@@ -45,7 +45,7 @@ SRC = main.c function.c etc.c			//todos os arquivos que forem ser compilados.
 all: $(NAME)							//Regra "all" que roda a regra NAME
 
 $(NAME):								//Regra NAME
-	gcc -o %(NAME) $(SRC)
+	gcc -o $(NAME) $(SRC)
 
 clean:
 	/bin/rm -f $ *.O					//Remove todos arquivos .o (Restos da compilacao)

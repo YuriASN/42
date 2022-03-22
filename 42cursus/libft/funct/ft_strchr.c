@@ -6,13 +6,13 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 15:51:11 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/13 22:06:35 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/22 23:32:35 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Find for the first character c (an unsigned char)
 in the string pointed to by the argument str.
-This returns a pointer to the first occurrence of the character c in the string str,
+This returns a pointer to the 1st occurrence c in the string str,
 or NULL if the character is not found. */
 
 #include "libft.h"

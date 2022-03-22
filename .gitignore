@@ -1,2 +1,4 @@
 42cursus/Aval/*
 42cursus/libft/funct/libft.h.gch
+*.out
+*.exe
