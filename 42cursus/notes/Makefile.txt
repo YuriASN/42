@@ -35,7 +35,7 @@ regra_a;
 }
 
 **Exemplo Util**
-{
+
 42 HEADER
 
 NAME = myprogram						//Nome do executavel.
@@ -48,10 +48,9 @@ $(NAME):								//Regra NAME
 	gcc -o $(NAME) $(SRC)
 
 clean:
-	/bin/rm -f $ *.O					//Remove todos arquivos .o (Restos da compilacao)
+	/bin/rm -f *.O					//Remove todos arquivos .o (Restos da compilacao)
 
 fclean: clean							//Roda a regra clean
 	/bin/rm -f $(NAME)					//remove o arquivo executavel (Assim fica de volta a antes de compilar)
 
-re: fclean all							//remove tudo e recompila
-}
+re: fclean all							//remove tudo e recompila.
