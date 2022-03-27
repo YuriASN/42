@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 22:13:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/27 19:20:59 by ysantos-         ###   ########.fr       */
+/*   Created: 2022/03/27 15:29:59 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/03/27 15:40:13 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* erases the data in the n bytes of the memory
-starting at the location pointed to by s, by writing zeros (bytes
-containing '\0') to that area. */
+/* lst: teh beggining of the list.
+Returns the last node of the list */
 
-void	ft_bzero(void *s, size_t bytes)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	index;
+	int	count;
 
-	index = 0;
-	while (index < bytes)
-		((unsigned char *)s)[index++] = '\0';
+	count = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		++count;
+	}
+	return (count);
 }

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 22:13:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/27 19:20:59 by ysantos-         ###   ########.fr       */
+/*   Created: 2022/03/27 15:47:43 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/03/27 16:01:48 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* erases the data in the n bytes of the memory
-starting at the location pointed to by s, by writing zeros (bytes
-containing '\0') to that area. */
+/* Adds the node 'new' to the end of the list
+lst: The address of a pointer to the 1st link of a list */
 
-void	ft_bzero(void *s, size_t bytes)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	index;
+	t_list	*tmp;
 
-	index = 0;
-	while (index < bytes)
-		((unsigned char *)s)[index++] = '\0';
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	tmp = ft_lstlast(*lst);
+	tmp->next = new;
 }

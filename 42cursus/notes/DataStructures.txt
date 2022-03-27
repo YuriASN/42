@@ -24,6 +24,7 @@ typedef + struct. // na hora de decalrar o nome do tipo da estrutura se torna re
 		...
 	}
 	//Declarei a e b como estruturas s_point. reduzi o usual "struct s_point a;" para t_point a;
+	Para dar valor à uma variável usa-se "a.x = 10"
 
 pointer de struct
 	Para indicar a varialvel dentro com um pointer de uma struct utiliza-se "->", ex.:

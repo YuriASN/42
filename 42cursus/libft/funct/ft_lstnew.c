@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 22:13:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/27 19:20:59 by ysantos-         ###   ########.fr       */
+/*   Created: 2022/03/25 21:29:10 by ysantos-          #+#    #+#             */
+/*   Updated: 2022/03/27 15:05:59 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* erases the data in the n bytes of the memory
-starting at the location pointed to by s, by writing zeros (bytes
-containing '\0') to that area. */
+/* Allocates with malloc and return a new node.
+The member variable 'content' is initialized with
+the value of the parameter 'content'.
+The variable 'next' is initialized to NULL */
 
-void	ft_bzero(void *s, size_t bytes)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	index;
+	t_list	*new;
 
-	index = 0;
-	while (index < bytes)
-		((unsigned char *)s)[index++] = '\0';
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
+		return (0);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
