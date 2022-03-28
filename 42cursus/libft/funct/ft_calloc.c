@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 22:28:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/13 17:56:44 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/28 21:36:52 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ is explicitly initialized to zero bytes.
 
 void	*ft_calloc(size_t number, size_t size)
 {
-	if (number < 1 || size < 1)
+	void	*a;
+
+	a = malloc(number * size);
+	if (!a)
 		return (0);
-	else
-		return (malloc(number * size));
+	ft_memset(a, 0, (number * size));
+	return (a);
 }

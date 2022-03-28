@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:15:15 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/27 20:10:17 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/28 22:24:59 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	t_list	*tmp;
 
-	tmp = (t_list *)malloc(sizeof(t_list));
 	while (lst)
 	{
+		tmp = ft_lstnew(f(lst->content));
 		if (!tmp)
 		{
 			ft_lstclear(&new, del);
 			return (0);
 		}
-		tmp = ft_lstnew(f(lst->content));
 		ft_lstadd_back(&new, tmp);
 		lst = lst->next;
 	}
