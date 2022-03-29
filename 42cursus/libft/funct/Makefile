@@ -6,11 +6,11 @@
 #    By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 19:23:52 by ysantos-          #+#    #+#              #
-#    Updated: 2022/03/28 20:49:12 by ysantos-         ###   ########.fr        #
+#    Updated: 2022/03/30 00:37:12 by ysantos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Libft.a
+NAME = libft.a
 
 SRC = ft_memset.c ft_atoi.c ft_putchar_fd.c ft_bzero.c ft_putendl_fd.c \
 ft_calloc.c ft_putnbr_fd.c ft_isalnum.c ft_putstr_fd.c ft_isalpha.c \
@@ -44,6 +44,12 @@ clean:
 	/bin/rm -f *.o
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME) libft.h.gch libft.so
 
 re: fclean all
+
+rebonus: fclean bonus
+
+so:
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRC) $(BN)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BNOBJ)

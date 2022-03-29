@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 21:43:11 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/13 17:47:43 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/29 23:15:56 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,25 @@ int	ft_atoi(const char *str)
 {
 	int	nbr;
 	int	sign;
-	int	index;
+	int	i;
 
-	index = 0;
+	i = 0;
 	nbr = 0;
 	sign = 1;
-	if (str[index] == '-' || str[index] == '+')
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[index] == '-' )
+		if (str[i] == '-' )
 			sign *= -1;
-		++index;
+		++i;
 	}
-	while (str[index] >= '0' && str[index] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr *= 10;
-		nbr += str[index] - '0';
-		++index;
+		nbr += str[i] - '0';
+		++i;
 	}
 	return (nbr * sign);
 }
