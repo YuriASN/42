@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 15:24:10 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/30 00:22:04 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/31 01:45:59 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,22 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	i = 0;
 	if (!src && !dest)
-		return (0);
+		return (NULL);
 	while (i < n)
 	{
 		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		++i;
 	}
-	((unsigned char *)dest)[i] = '\0';
 	return (dest);
 }
 
 /* int	main(void)
 {
-	const char	src[] = "https://profile.intra.42.fr/";
-	char		dest[50] = "Heloooo!!";
+	char	*src = malloc(4);
+	char		dest[50] = "";
 
-	printf("Before memcpy dest = %s\n", dest);
-	ft_memcpy(dest, src, ft_strlen(src)+1);
-	printf("After memcpy dest = %s\n", dest);
+	memset(src, 'A', 3);
+	printf("original = %s\n", memcpy(NULL, src, 3));
+	printf("mine = %s\n", ft_memcpy(NULL, src, 3));
 	return (0);
 } */

@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 21:28:54 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/24 21:44:00 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/31 01:11:48 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*str;
 
 	str = (char *)malloc(ft_strlen(s) + 1);
+	if (!str)
+		return (0);
 	i = 0;
 	while (s[i])
 	{
 		str[i] = f(i, s[i]);
 		++i;
 	}
+	str[i] = '\0';
 	return (str);
 }

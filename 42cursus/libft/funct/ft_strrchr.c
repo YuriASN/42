@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 19:32:38 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/13 18:19:03 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/30 23:32:49 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = ft_strlen(s) - 1;
+	i = ft_strlen(s);
 	while (i >= 0)
 	{
 		if (s[i] == (const char)c)

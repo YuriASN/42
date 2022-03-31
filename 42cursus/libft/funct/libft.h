@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:15:32 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/29 23:19:52 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/30 22:57:38 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MANDATORY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -33,12 +34,14 @@ char	*ft_strnstr(const char	*cmp, const char *src, size_t len);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *str);
 
+void	*ft_calloc(size_t number, size_t size);
 void	*ft_memset(void *str, int c, int bytes);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
-void	*memchr(const void *str, int c, size_t bytes);
+void	*ft_memchr(const void *str, int c, size_t bytes);
 
 int		ft_isprint(int x);
 int		ft_isdigit(int x);

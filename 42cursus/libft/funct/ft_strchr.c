@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 15:51:11 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:32:35 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/30 23:32:29 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ char	*ft_strchr(const char *str, int c)
 			return (&((char *)str)[i]);
 		++i;
 	}
+	if (str[i] == (unsigned char)c)
+		return (&((char *)str)[i]);
 	return (0);
 }

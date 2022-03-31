@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 22:31:43 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/13 18:22:50 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/30 23:27:09 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memchr(const void *str, int c, size_t bytes)
 	size_t	index;
 
 	index = 0;
-	while (index < bytes && ((unsigned char *)str)[index] != '\0')
+	while (index < bytes)
 	{
 		if (((unsigned char *)str)[index] == (unsigned char)c)
 			return ((void *)(str + index));

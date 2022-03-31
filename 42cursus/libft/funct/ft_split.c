@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 22:38:58 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/22 23:34:42 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/31 01:43:34 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ char	**ft_split(char const *s, char c)
 	int		nbr;
 	int		i;
 
-	str = "Hello, people,,,, from this nice,,,,, world.";
-	nbr = count_strings(str, ',');
+	str = "split  ||this|for|me|||||!|";
+	nbr = count_strings(str, '|');
 	printf("%d\n", nbr);
-	result = ft_split(str, ',');
+	result = ft_split(str, '|');
 	for(i = 0; i < nbr; ++i)
 	{
-		printf("String n %d = %s\n", i, result[i]);
+		printf("String n %d = %s\n", i + 1, result[i]);
 	}
 	return (0);
 } */
