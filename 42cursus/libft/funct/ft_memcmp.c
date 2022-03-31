@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/27 14:53:25 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/31 01:49:10 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/31 22:47:39 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	while (index < n && str1 && str2)
 	{
 		if (((unsigned char *)str1)[index] != ((unsigned char *)str2)[index])
-			return (((char *)str1)[index] - ((char *)str2)[index]);
+			return (((unsigned char *)str1)[index] - ((unsigned char *)str2)[index]);
 		++index;
 	}
 	return (0);

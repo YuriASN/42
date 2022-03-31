@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:49:37 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/20 21:24:38 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/03/31 22:33:43 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (newstr);
 }
 
-/* int	main(void)
+int	main(void)
 {
-	char	*str = "---Essa e' a str anteri-or.--";
-	char	*set = "-";
+	char	*str = "---Essa e' -a str anteri-or.--";
+	char	*set = "-E.";
 
 	printf("A str antiga e': %s\nA str nova e': %s\n", str, ft_strtrim(str, set));
 	return (0);
-} */
+}
+
+//tem que aceitar mais de um caractere em set.
