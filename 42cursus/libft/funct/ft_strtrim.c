@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:49:37 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/31 22:33:43 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:20:45 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@ Allocates (with malloc(3)) and returns a copy of
 from the beginning and the end of the string.
 */
 
+static int	is_equal(char const *s1, char const *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (s1[0] == set[i])
+			return (1);
+		++i;
+	}
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
@@ -26,25 +40,49 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	i = 0;
 	j = 0;
-	newstr = (char *)malloc(ft_strlen(s1) + 1);
-	if (newstr == NULL)
-		return (0);
-	while (s1[i] == set[0])
+	while (is_equal(&(s1[i]), set))
 		++i;
 	j = ft_strlen(&s1[i]) - 1;
-	while (s1[j + i] == set[0])
+	while (is_equal(&(s1[j + i]), set))
 		--j;
-	ft_strlcpy(newstr, &s1[i], j + 2);
+	if ((j - i) < 0)
+	{
+		newstr = ft_substr(s1, 0, 0);
+		return (newstr);
+	}
+	newstr = ft_substr(s1, i, j + 1);
 	return (newstr);
 }
 
+/* char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
+	char	*newstr;
+
+	i = 0;
+	j = 0;
+	while (is_equal(&(s1[i]), set))
+		++i;
+	//printf("i = %d / %s\n", i, &s1[i]);
+	j = ft_strlen(s1) - 1;
+	while (is_equal(&(s1[j]), set))
+		--j;
+	//printf("j = %d / %s\n", j, &s1[j]);
+	newstr = (char *)malloc(sizeof(char *) * (j - i + 2));
+	//printf("rodou malloc = %d\n", j - i + 1);
+	if (newstr == NULL)
+		return (0);
+	ft_strlcpy(newstr, &s1[i], j + 2);
+	//printf("strlcpy\n");
+	return (newstr);
+} */
+
 int	main(void)
 {
-	char	*str = "---Essa e' -a str anteri-or.--";
-	char	*set = "-E.";
+	char	*str = "\t   \n\n\n  \n\n\t \t\t\t\n  \t\t\t\t  ";
+	char	*set = " \n\t";
 
 	printf("A str antiga e': %s\nA str nova e': %s\n", str, ft_strtrim(str, set));
 	return (0);
 }
-
-//tem que aceitar mais de um caractere em set.
