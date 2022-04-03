@@ -2,4 +2,4 @@
 42cursus/libft/funct/libft.h.gch
 *.out
 *.exe
-42cursus/libft/testers
+42cursus/libft/testers/*
