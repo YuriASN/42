@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 22:08:23 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/31 22:23:38 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/04 00:06:31 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,24 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	*s;
-
-	s = ft_itoa(n);
-	write(fd, s, ft_strlen(s));
-	free (s);
+	if (n == 0)
+	{
+		ft_putchar_fd('0', fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		if (n == -2147483648)
+		{
+			ft_putstr_fd("2147483648", fd);
+			return ;
+		}
+		n *= -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd((n % 10) + '0', fd);
 }

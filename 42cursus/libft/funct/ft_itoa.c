@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:35:34 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/31 01:03:34 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/03 23:01:16 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Returns a string representing the integer received as an argument.
 Negative numbers must be handled. */
 
-static int	ft_size(long int n)
+static int	nbr_size(long int n)
 {
 	int	i;
 
@@ -35,43 +35,31 @@ static int	ft_size(long int n)
 	return (i);
 }
 
-static void	swap_nbr(int x, char *str)
-{
-	static int	i;
-
-	i = 0;
-	if (x > 0)
-	{
-		swap_nbr(x / 10, str);
-		str[i++] = (x % 10) + '0';
-	}
-}
-
 char	*ft_itoa(int n)
 {
 	int		i;
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * ft_size(n) + 1);
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	str = (char *)malloc(sizeof(char) * nbr_size(n) + 1);
 	if (!str)
 		return (0);
-	i = 0;
-	if (n == 0)
-		str[0] = '0';
-	if (n == -2147483648)
-	{
-		str = "-2147483648";
-		str[ft_strlen(str)] = '\0';
-		return (str);
-	}
+	i = nbr_size(n);
+	str[i] = '\0';
 	if (n < 0)
 	{
-		str[i] = '-';
+		str[0] = '-';
 		n *= -1;
-		++i;
 	}
-	swap_nbr(n, &str[i]);
-	str[ft_strlen(str)] = '\0';
+	while (n > 0)
+	{
+		--i;
+		str[i] = (n % 10) + '0';
+		n /= 10;
+	}
 	return (str);
 }
 
