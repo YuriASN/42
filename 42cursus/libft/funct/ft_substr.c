@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 21:00:22 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/03 13:21:24 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/06 23:25:27 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 
-	sub = (char *)malloc(len + 1);
+	sub = (char *)malloc(sizeof(*s) * len + 1);
 	if (!sub)
 		return (0);
 	if (!s || start >= (unsigned int)ft_strlen(s) || len == 0)
@@ -39,7 +39,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*a = "String to be copied from here until here and not reach the end";
 	char	*b;
 
-	b = ft_substr(a, 25, 150);
+	b = ft_substr(a, 25, 15);
 	printf("Str: %s\nSubstr:%s\n", a, b);
 	return (0);
 } */
