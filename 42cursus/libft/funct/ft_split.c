@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 22:38:58 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/31 01:43:34 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:15:34 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**ft_split(char const *s, char c)
 	size_t	save;
 
 	arr = (char **)malloc(count_strings(s, c) * sizeof(char *));
-	if (!arr || !s || !c)
+	if (!arr)
 		return (0);
 	str = 0;
 	i = 0;
@@ -65,20 +65,20 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	char	*str;
 	char	**result;
 	int		nbr;
 	int		i;
 
-	str = "split  ||this|for|me|||||!|";
-	nbr = count_strings(str, '|');
+	str = "\0aa\0bbb";
+	nbr = count_strings(str, '\0');
 	printf("%d\n", nbr);
-	result = ft_split(str, '|');
+	result = ft_split(str, '\0');
 	for(i = 0; i < nbr; ++i)
 	{
 		printf("String n %d = %s\n", i + 1, result[i]);
 	}
 	return (0);
-} */
+}

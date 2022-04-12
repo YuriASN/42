@@ -2,46 +2,9 @@ ft_memset:     [OK] [OK] [OK] [OK] [OK] [OK] [OK]
 ft_bzero:      [OK] [OK] [OK] [OK] 
 ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_memccpy:    [MISSING]
-ft_memmove:    [OK] [OK] [OK] [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-[fail]: your memmove does not support the overlap (test 1)
-Test code:
-	char dst1[0xF0];
-	char dst2[0xF0];
-	char *data = "thiß ß\xde\xad\xbe\xeftriñg will be øvérlapéd !\r\n";
-	int size = 0xF0 - 0xF;
-
-	memset(dst1, 'A', sizeof(dst1));
-	memset(dst2, 'A', sizeof(dst2));
-	memcpy(dst1, data, strlen(data));
-	memcpy(dst2, data, strlen(data));
-	memmove(dst1 + 3, dst1, size);
-	ft_memmove(dst2 + 3, dst2, size);
-	if (!memcmp(dst1, dst2, size))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     memmove: |thithiß ßޭ��triñg will be øvérlapéd !
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA�j|
-  ft_memmove: |thithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithithiAAAAAAAAAAAAthithiß ßޭ��triñg will be øvérlapéd !
-AAAAAAAAAAAAAA|
-
+ft_memmove:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_memchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_memcmp:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [NO CRASH] 
-[no crash]: your memcmp does not segfault when null parameter is sent
-Test code:
-	char b1[] = "nyancat";
-
-	ft_memcmp(((void*)0), b1, 4);
-
-
-[no crash]: your memcmp does not segfault when null parameter is sent
-Test code:
-	char b1[] = "nyancat";
-
-	ft_memcmp(b1, ((void*)0), 4);
-
-
+ft_memcmp:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_isalpha:    [OK] 
 ft_isdigit:    [OK] 
@@ -112,49 +75,7 @@ ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK]
 ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strlcat:    [OK] [FAILED] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-[fail]: your strlcat does not work with basic input
-Test code:
-	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
-	char buff1[0xF00] = "there is no stars in the sky";
-	char buff2[0xF00] = "there is no stars in the sky";
-	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
-	size_t r1 = strlcat(buff1, str, max);
-	size_t r2 = ft_strlcat(buff2, str, max);
-
-	if (r1 != r2)
-		exit(TEST_FAILED);
-	char s1[4] = "";
-	char s2[4] = "";
-	r1 = strlcat(s1, "thx to ntoniolo for this test !", 4)
-		;
-	r2 = ft_strlcat(s2, "thx to ntoniolo for this test !", 4)
-		;
-	if (r1 != r2)
-		exit(TEST_FAILED);
-	exit(TEST_SUCCESS);
-
-Diffs:
-     strlcat: |42|
-  ft_strlcat: |47|
-
-[fail]: your strlcat does not work with basic input
-Test code:
-	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
-	char buff1[0xF00] = "there is no stars in the sky";
-	char buff2[0xF00] = "there is no stars in the sky";
-	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + strlen("there is no stars in the sky");
-
-	strlcat(buff1, str, max);
-	ft_strlcat(buff2, str, max);
-	if (!strcmp(buff1, buff2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strlcat: |there is no stars in the skythe cake is a lie |
-  ft_strlcat: |there is no stars in the sky|
-
+ft_strlcat:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strnstr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK] 
 [KO]: your atoi does not work with over long max value
@@ -189,146 +110,7 @@ ft_calloc:     [OK] [OK] [OK] [OK] [OK]
 ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}[OK] 
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
-ft_strtrim:    [FAILED] [FAILED] [OK] [FAILED] [OK] [KO] [FAILED] [OK] [FAILED] {not protected}
-[fail]: your strtrim does not work with basic input
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strtrim: |Hello 	  Please
- Trim me !|
-  ft_strtrim: |	  
-
- 		  
-
-
-Hello 	  Please
- Trim me !
-   
- 
- 		
-|
-
-[fail]: your strtrim does not work with basic input
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strtrim: |Hello 	  Please
- Trim me !|
-  ft_strtrim: |	  
-
- 		  
-
-
-Hello 	  Please
- Trim me !|
-
-[fail]: your strtrim does not work with full blank input
-Test code:
-	char *s1 = "  \t \t \n   \n\n\n\t";
-	char *s2 = "";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-Diffs:
-     strtrim: ||
-  ft_strtrim: |	 	 
-   
-
-
-	|
-
-[KO]: your strtrim did not allocate the good size so the \0 test may be false
-Test code:
-	char *s1 = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	int r_size = strlen(s2);
-	int size;
-
-	ft_strtrim(s1, " \n\t");
-	size = get_last_malloc_size();
-	if (size == r_size + 1)
-		exit(TEST_SUCCESS);
-	exit(TEST_KO);
-
-Diffs:
-     strtrim: |27|
-  ft_strtrim: |55|
-
-[fail]: your strtrim does not allocate memory
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-	char *ret = ft_strtrim(s1, " \n\t");
-
-	if (!strcmp(ret, s2))
-	{
-		free(ret);
-		exit(TEST_SUCCESS);
-	}
-	free(ret);
-	exit(TEST_FAILED);
-
-Diffs:
-     strtrim: |Hello 	  Please
- Trim me !|
-  ft_strtrim: |	  
-
- 		  
-
-
-Hello 	  Please
- Trim me !
-   
- 
- 		
-|
-
-[fail]: your strtrim does not set \0 to the end of the string
-Test code:
-	char *s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-	char *s2 = "Hello \t  Please\n Trim me !";
-
-	char *ret = ft_strtrim(s1, " \n\t");
-	if (!strcmp(s2, ret))
-	{
-		free(ret);
-		exit(TEST_SUCCESS);
-	}
-	free(ret);
-	exit(TEST_FAILED);
-
-Diffs:
-     strtrim: |Hello 	  Please
- Trim me !|
-  ft_strtrim: |	  
-
- 		  
-
-
-Hello 	  Please
- Trim me !
-   
- 
- 		
-|
-
+ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [CRASH] [OK] [CRASH] {not protected}
 [crash]: your split will segfault in case --> *str="\0aa\0bbb" c='\0' 
 Test code:
@@ -379,121 +161,12 @@ Test code:
 	exit(TEST_SUCCESS);
 
 
-ft_itoa:       [FAILED] [FAILED] [OK] [CRASH] [FAILED] [OK] [OK] [OK] [CRASH] 
-[fail]: your itoa does not work with basic input
-Test code:
-	char *i1 = ft_itoa(-623);
-	char *i2 = ft_itoa(156);
-	char *i3 = ft_itoa(-0);
-
-	if (strcmp(i1, "-623"))
-	{
-		exit(TEST_FAILED);
-	}
-	if (strcmp(i2, "156"))
-	{
-		exit(TEST_FAILED);
-	}
-	if (strcmp("0", i3))
-	{
-		exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-        itoa: |156|
-     ft_itoa: |156t protected}trim: |He!|
-
-[fail]: your itoa does not work with random number
-Test code:
-	srand(clock());
-	int n;
-	char *d;
-
-	for (int i = 0; i < 2000; i++)
-	{
-		n = rand();
-		d = ft_itoa(n);
-		if (atoi(d) != n)
-		{
-			exit(TEST_FAILED);
-		}
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-        itoa: |1668341126|
-     ft_itoa: |-669611914|
-
-[crash]: your itoa does not work with min int
-Test code:
-	char *i1 = ft_itoa((-2147483647 -1));
-
-	if (atoi(i1) != (-2147483647 -1))
-	{
-		exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-
-[fail]: your itoa don't set \0 at the end of the string
-Test code:
-
-	char *i1 = ft_itoa(-1234);
-	if (strcmp(i1, "-1234"))
-	{
-		exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-        itoa: |-1234|
-     ft_itoa: |-1234A|
-
-[crash]: your itoa did not allocate memory for the int min value
-Test code:
-	char *i1 = ft_itoa((-2147483647 -1));
-
-	fd_to_buffer(2);
-	free(i1);
-	write(2, "", 1);
-	get_fd_buffer(2, ((void*)0), 0);
-	exit(TEST_SUCCESS);
-
-
+ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_putchar_fd: [OK] [OK] 
 ft_putstr_fd:  [OK] [OK] {not protected}
 ft_putendl_fd: [OK] [OK] {not protected}
-ft_putnbr_fd:  [OK] [OK] [CRASH] [OK] [CRASH] 
-[crash]: your putnbr_fd does not work with int min
-Test code:
-	int i = (-2147483647 -1);
-	char buff[0xF0];
-
-	fd_to_buffer(2);
-	ft_putnbr_fd(i, 2);
-	write(2, "", 1);
-	get_fd_buffer(2, buff, 0xF0);
-	if (atoi(buff) == i)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: your putnbr_fd allocate memory, wtf ???
-Test code:
-	int i = (-2147483647 -1);
-	char buff[0xF0];
-
-	fd_to_buffer(2);
-	ft_putnbr_fd(i, 2);
-	write(2, "", 1);
-	get_fd_buffer(2, buff, 0xF0);
-	if (atoi(buff) == i)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
+ft_putnbr_fd:  [OK] [OK] [OK] [OK] [OK] 
 ft_lstnew:     [OK] [OK] [OK] [OK] 
 ft_lstadd_front: [OK] [OK] [OK] 
 ft_lstsize:    [OK] [OK] 
