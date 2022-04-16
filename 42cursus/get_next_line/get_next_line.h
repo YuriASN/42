@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:04 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/12 18:42:21 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/16 22:54:21 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-size_t	get_line_size(int fd);
+//size_t	get_line_size(int fd);
 
 #endif
