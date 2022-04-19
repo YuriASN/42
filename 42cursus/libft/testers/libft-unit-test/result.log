@@ -8,69 +8,11 @@ ft_memcmp:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK]
 ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_isalpha:    [OK] 
 ft_isdigit:    [OK] 
-ft_isalnum:    [FAILED] 
-[fail]: your isalnum just doesn't work, REALLY ?!
-Test code:
-	int i;
-
-	i = -1;
-	while (i < 530)
-	{
-		if (!!ft_isalnum(i) != !!((*__ctype_b_loc ())[(int) ((i))] & (unsigned short int) _ISalnum))
-			exit(TEST_FAILED);
-		i++;
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-
-
+ft_isalnum:    [OK] 
 ft_isascii:    [OK] 
 ft_isprint:    [OK] 
-ft_toupper:    [FAILED] 
-[fail]: your toupper just doesn't work, REALLY ?!
-Test code:
-	int i;
-
-	i = -100;
-	while (i < 530)
-	{
-		if (ft_toupper(i) != (__extension__ ({ int __res; if (sizeof (i) > 1) { if (__builtin_constant_p (i)) { int __c = (i); __res = __c < -128 || __c > 255 ? __c : (*__ctype_toupper_loc ())[__c]; } else __res = toupper (i); } else __res = (*__ctype_toupper_loc ())[(int) (i)]; __res; })))
-		{
-				;
-			exit(TEST_FAILED);
-		}
-		i++;
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-     toupper: |156|
-  ft_toupper: |-100|
-param: (-100)
-
-ft_tolower:    [FAILED] 
-[fail]: your tolower just doesn't work, REALLY ?!
-Test code:
-	int i;
-
-	i = -100;
-	while (i < 530)
-	{
-		if (ft_tolower(i) != (__extension__ ({ int __res; if (sizeof (i) > 1) { if (__builtin_constant_p (i)) { int __c = (i); __res = __c < -128 || __c > 255 ? __c : (*__ctype_tolower_loc ())[__c]; } else __res = tolower (i); } else __res = (*__ctype_tolower_loc ())[(int) (i)]; __res; })))
-		{
-				;
-			exit(TEST_FAILED);
-		}
-		i++;
-	}
-	exit(TEST_SUCCESS);
-
-Diffs:
-     tolower: |156|
-  ft_tolower: |-100|
-param: (-100)
-
+ft_toupper:    [OK] 
+ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
@@ -108,59 +50,10 @@ Diffs:
 
 ft_calloc:     [OK] [OK] [OK] [OK] [OK] 
 ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {protected}[OK] 
+ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}[OK] 
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
-ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [CRASH] [OK] [CRASH] {not protected}
-[crash]: your split will segfault in case --> *str="\0aa\0bbb" c='\0' 
-Test code:
-	char **expected = ft_split("\0aa\0bbb", '\0');
-
-	for (int i = 0; expected[i]; i++)
-	{
-		if (expected[i] != ((void*)0))
-			exit(TEST_FAILED);
-	}
-	exit(TEST_SUCCESS);
-
-
-[crash]: your split does not work with basic input
-Test code:
-	char *s = "split  ||this|for|me|||||!|";
-	int i = 0;
-	char **result = ft_split(s, '|');
-
-	while (result[i])
-	{
-		if (strcmp(result[i], *expected))
-		{
-			exit(TEST_FAILED);
-		}
-		free(result[i]);
-		i++;
-		expected++;
-	}
-	free(result);
-	exit(TEST_SUCCESS);
-
-
-[crash]: your split does not work with basic input
-Test code:
-	char *s = "      split       this for   me  !       ";
-
-	char **result = ft_split(s, ' ');
-	while (*result)
-	{
-		if (strcmp(*result, *expected))
-		{
-			exit(TEST_FAILED);
-		}
-		result++;
-		expected++;
-	}
-	exit(TEST_SUCCESS);
-
-
+ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_putchar_fd: [OK] [OK] 
@@ -173,37 +66,7 @@ ft_lstsize:    [OK] [OK]
 ft_lstlast:    [OK] [OK] 
 ft_lstadd_back:[OK] [OK] [OK] 
 ft_lstdelone:  [OK] 
-ft_lstclear:   [CRASH] [OK] [CRASH] 
-[crash]: your lstclear does not work with basic input
-Test code:
-	t_list *l = lstnew(strdup("nyancat"));
-
-	l->next = lstnew(strdup("#TEST#"));
-	ft_lstclear(&l, lstdelone_f);
-	write(2, "", 1);
-	if (!l)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
-[crash]: bad call number of the function pointer
-Test code:
-	char *content = "hello !";
-
-	__delNum = 0;
-	list = malloc(sizeof(t_list));
-	bzero(list, sizeof(t_list));
-	list->next = malloc(sizeof(t_list));
-	bzero(list->next, sizeof(t_list));
-	list->content = content;
-	list->next->content = content + 2;
-	ft_lstclear(&list, lstdel_f);
-	write(2, "", 1);
-	if (__delNum == 2)
-		exit(TEST_SUCCESS);
-	exit(TEST_FAILED);
-
-
+ft_lstclear:   [OK] [OK] [OK] 
 ft_lstiter:    [OK] {protected}
 ft_lstmap:     [CRASH] {protected}
 [crash]: your lstmap does not work with basic input
@@ -213,7 +76,7 @@ Test code:
 
 	l->next = lstnew(strdup("ss"));
 	l->next->next = lstnew(strdup("-_-"));
-	ret = ft_lstmap(l, lstmap_f, ((void*)0));
+	ret = ft_lstmap(l, lstmap_f, ((void *)0));
 	if (!strcmp(ret->content, "OK !") && !strcmp(ret->next->content, "OK !") && !strcmp(ret->next->next->content, "OK !") && !strcmp(l->content, " 1 2 3 ") && !strcmp(l->next->content, "ss") && !strcmp(l->next->next->content, "-_-"))
 		exit(TEST_SUCCESS);
 	exit(TEST_FAILED);

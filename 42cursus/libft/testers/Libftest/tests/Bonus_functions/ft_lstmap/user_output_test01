@@ -1,0 +1,11 @@
+elem content = abcdef
+elem content = bbcdef
+elem content = dbcdef
+elem content = gbcdef
+
+tmp = (null) elem = yyyyyy
+tmp = (null)
+tmp = yyyyyy
+tmp = yyyyyy
+tmp = yyyyyy
+tmp = yyyyyy
