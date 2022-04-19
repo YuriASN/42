@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 22:38:58 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/11 01:15:34 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/19 00:59:46 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 	return (arr);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char	*str;
 	char	**result;
@@ -81,4 +81,4 @@ int	main(void)
 		printf("String n %d = %s\n", i + 1, result[i]);
 	}
 	return (0);
-}
+} */

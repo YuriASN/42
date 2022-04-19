@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 21:00:22 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/06 23:25:27 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/19 02:32:08 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 
-	sub = (char *)malloc(sizeof(*s) * len + 1);
-	if (!sub)
-		return (0);
-	if (!s || start >= (unsigned int)ft_strlen(s) || len == 0)
+	if (len > ft_strlen(s) && start < (unsigned int)ft_strlen(s) && s)
+		sub = (char *)malloc(sizeof(*s) * (ft_strlen(s) + 1));
+	else if (!s || start >= (unsigned int)ft_strlen(s) || len == 0)
 	{
+		sub = (char *)malloc(sizeof(char *) * 1);
 		sub[0] = '\0';
 		return (sub);
 	}
+	else
+		sub = (char *)malloc(sizeof(*s) * len + 1);
+	if (!sub)
+		return (0);
 	ft_strlcpy(sub, &s[start], len + 1);
 	return (sub);
 }
@@ -40,6 +44,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*b;
 
 	b = ft_substr(a, 25, 15);
+	printf("Str: %s\nSubstr:%s\n---\n", a, b);
+
+	a = "01234";
+	b = ft_substr(a, 10, 10);
 	printf("Str: %s\nSubstr:%s\n", a, b);
+	
 	return (0);
 } */

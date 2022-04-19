@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:49:37 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/03 19:55:53 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/19 02:12:44 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = 0;
 	while (is_equal(&(s1[i]), set))
 		++i;
-	j = ft_strlen(&s1[i]) - 1;
-	while (is_equal(&(s1[j + i]), set))
+	j = ft_strlen(s1) - 1;
+	while (is_equal(&(s1[j]), set))
 		--j;
 	if ((j - i) < 0)
 	{
 		newstr = ft_substr(s1, 0, 0);
 		return (newstr);
 	}
-	newstr = ft_substr(s1, i, j + 1);
+	newstr = ft_substr(s1, i, j - i + 1);
 	return (newstr);
 }
 
@@ -58,7 +58,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str = "\t   \n\n\n  \n\n\t \t\t\t\n  \t\t\t\t  ";
 	char	*set = " \n\t";
-
 	printf("A str antiga e': %s\nA str nova e': %s\n", str, ft_strtrim(str, set));
+	
+	str = "abcdba";
+	set = "abc";
+	printf("A str antiga e': %s\nA str nova e': %s\n", str, ft_strtrim(str, set));
+	
+	str = "   xxxtripouille   xxx";
+	set = " x";
+	printf("A str antiga e': %s\nA str nova e': %s\n", str, ft_strtrim(str, set));
+	
 	return (0);
 } */
