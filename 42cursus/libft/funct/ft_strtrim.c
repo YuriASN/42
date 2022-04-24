@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 23:49:37 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/19 02:12:44 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/24 02:56:09 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		j;
 	char	*newstr;
 
+	if (!s1)
+		return (0);
 	i = 0;
 	j = 0;
 	while (is_equal(&(s1[i]), set))

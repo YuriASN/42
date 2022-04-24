@@ -3,7 +3,7 @@ $> hostname; uname -msr
 c1r17s12.42lisboa.com
 Darwin 19.6.0 x86_64
 $> date
-Tue Apr 19 02:44:08 WEST 2022
+Dom 24 Abr 2022 03:14:44 WEST
 $> gcc --version
 Apple clang version 12.0.0 (clang-1200.0.32.29)
 Target: x86_64-apple-darwin19.6.0
@@ -30,7 +30,7 @@ ar rcs libft.a ft_memset.o ft_atoi.o ft_putchar_fd.o ft_bzero.o ft_putendl_fd.o 
 ranlib libft.a
 
 $> ls -la libft.a
--rw-r--r--  1 ysantos-  2022_lisboa  42560 Apr 19 02:44 /Users/ysantos-/Desktop/personalhub/42cursus/libft/testers/Libftest/tmp_tests_dir/libft.a
+-rw-r--r--  1 ysantos-  2022_lisboa  43096 24 Abr 03:14 /Users/ysantos-/Desktop/personalhub/42cursus/libft/testers/Libftest/tmp_tests_dir/libft.a
 
 = Part1_functions ==============================================================
 
@@ -1130,10 +1130,14 @@ $> diff -U 3 user_output_test01 test01.output
 Diff OK :D
 = Test 2 ===================================================
 $> ./user_exe 02
-Command './user_exe 02' got killed by a Segmentation fault
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
 = Test 3 ===================================================
 $> ./user_exe 03
-Command './user_exe 03' got killed by a Segmentation fault
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
 = Test 4 ===================================================
 $> ./user_exe 04
 $> diff -U 3 user_output_test04 test04.output
@@ -1141,7 +1145,9 @@ $> diff -U 3 user_output_test04 test04.output
 Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
-Command './user_exe 05' got killed by a Bus error
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
 
 = ft_strjoin ===================================================================
 $> norminette ft_strjoin.c | grep -E '(Error|Warning)'
@@ -1306,7 +1312,9 @@ $> clang -Wextra -Wall -Werror /Users/ysantos-/Desktop/personalhub/42cursus/libf
 
 = Test 1 ===================================================
 $> ./user_exe 01
-Command './user_exe 01' got killed by an Abort
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_lstnew ====================================================================
 $> norminette ft_lstnew.c | grep -E '(Error|Warning)'

@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 22:38:58 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/19 00:59:46 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/24 03:13:17 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ The array must end with a NULL pointer. */
 
 #include "libft.h"
 
-static size_t	count_strings(char const *s, char c)
+static size_t	count_strings(char const *s, char const c)
 {
 	size_t	i;
 	size_t	count;
 
 	i = 0;
 	count = 0;
+	if (!s[i])
+		return (count);
 	while (s[i] == c && s[i])
 		++i;
 	while (s[i])
@@ -47,7 +49,9 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	save;
 
-	arr = (char **)malloc(count_strings(s, c) * sizeof(char *));
+	if (!s)
+		return (0);
+	arr = (char **)malloc((count_strings(s, c) + 1) * sizeof(char *));
 	if (!arr)
 		return (0);
 	str = 0;
@@ -57,25 +61,26 @@ char	**ft_split(char const *s, char c)
 		while (s[i] == c)
 			++i;
 		save = i;
-		while (s[i] != c)
+		while (s[i] != c && s[i])
 			i++;
 		arr[str] = ft_substr(s, save, (i - save));
 		++str;
 	}
+	arr[str] = NULL;
 	return (arr);
 }
 
 /* int	main(void)
 {
-	char	*str;
+	char	*str = "";
 	char	**result;
 	int		nbr;
 	int		i;
+	char	c = ' ';
 
-	str = "\0aa\0bbb";
-	nbr = count_strings(str, '\0');
-	printf("%d\n", nbr);
-	result = ft_split(str, '\0');
+	nbr = count_strings(str, c);
+	//printf("%d\n", nbr);
+	result = ft_split(str, c);
 	for(i = 0; i < nbr; ++i)
 	{
 		printf("String n %d = %s\n", i + 1, result[i]);
