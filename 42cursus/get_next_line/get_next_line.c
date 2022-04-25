@@ -6,19 +6,26 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/16 22:52:35 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/25 21:43:59 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-static void	free_ptr(char *str, char *buffer)
+static size_t	get_line_size(char *str)
 {
-	free(str);
-	free(buffer);
+	int		count;
+
+	count = 0;
+	while (str[count])
+	{
+		++count;
+	}
+	return (count);
 }
 
-static size_t	get_line_size(int fd)
+/* static size_t	get_line_size(int fd)
 {
 	int		count;
 	char	c;
@@ -30,7 +37,7 @@ static size_t	get_line_size(int fd)
 		++count;
 	}
 	return (count);
-}
+} */
 
 static size_t	buf_to_str(char *str, const char *buffer, size_t i)
 {
@@ -53,23 +60,21 @@ char	*get_next_line(int fd)
 	char			*str;
 	static size_t	i;
 
+	if (!fd)
+		return (0);
 	i = 0;
 	buffer = (char *)malloc(BUFFER_SIZE + 1 * sizeof(char *));
-	str = (char *)malloc((get_line_size(fd) + 1) * sizeof(char *));
-	if (!str || !buffer || !fd)
+	if (!read(fd, buffer, BUFFER_SIZE) || !buffer)
 	{
-		free_ptr(str, buffer);
+		free (buffer);
 		return (0);
 	}
+	printf("buffer with size %d = %s\n", BUFFER_SIZE, buffer);
+	str = (char *)malloc((get_line_size(buffer) + 1) * sizeof(char *));
 	if (buffer[i])
 	{
 		i = buf_to_str(str, buffer, i);
 		return (str);
-	}
-	if (!read(fd, buffer, BUFFER_SIZE))
-	{
-		free_ptr(str, buffer);
-		return (0);
 	}
 	i = 0;
 	i = buf_to_str(str, buffer, i);

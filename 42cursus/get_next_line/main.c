@@ -6,11 +6,12 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:19:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/12 18:27:46 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/25 20:34:01 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 int	main(void)
 {
