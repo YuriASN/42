@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 16:44:07 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/28 22:11:50 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/04/27 01:39:59 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Finally, the pointer to the list must be set to NULL. */
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (!*lst)
+	if (!*lst || !*del)
 		return ;
 	while (*lst)
 	{
