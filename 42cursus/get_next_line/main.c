@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:19:24 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/05 01:10:05 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/08 01:28:44 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	main(void)
 	do
 	{
 		str = get_next_line(fd);
-		printf("%s", str);
+		
+		printf("\e[0;31mMAIN = |%s|\e[0;37m", str);
+		
 	} while (str);
 	if (close(fd) == -1)
 	{

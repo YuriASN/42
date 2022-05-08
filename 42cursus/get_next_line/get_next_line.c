@@ -6,19 +6,19 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/05 04:48:22 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/08 01:46:32 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static size_t	get_line_size(char *str)
+static size_t	line_size(const char *str)
 {
-	int		count;
+	size_t		count;
 
 	count = 0;
-	while (str[count] || str[count] != '\n')
+	while (str[count] && str[count] != '\n')
 		++count;
 	return (count);
 }
@@ -39,63 +39,147 @@ static size_t	get_line_size(char *str)
 	return (count);
 } */
 
-static size_t	buf_to_str(char *str, const char *buffer, size_t i)
+//Copy src to dst and return final size of dst.
+size_t	ft_strlcpy(char *dst, const char *src, size_t src_start)
+{
+	size_t	i;
+
+	i = 0;
+	while (src[src_start])
+	{
+		dst[i] = src[src_start];
+		++i;
+		++src_start;
+	}
+	dst[i] = '\0';
+	return ((size_t)line_size(dst));
+}
+
+static size_t	buf_to_str(char *dst, const char *src, size_t i)
 {
 	size_t	o;
 
 	o = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (src[i] != '\n' && src[i])
 	{
-		str[o] = buffer[i];
+		dst[o] = src[i];
 		++i;
 		++o;
 	}
-	if (buffer[i] == '\n')
+	if (src[i] == '\n')
 	{
-		str[o] = buffer[i];
+		dst[o] = src[i];
 		++i;
 	}
-	if (!buffer[i])
+	if (!src[i])
 		i = 0;
-	str [o + 1] = '\0';
+	dst[o + 1] = '\0';
 	return (i);
 }
 
-size_t	*read_fd(int fd, char *str)
+ssize_t	read_fd(int fd, char *str)
 {
-	size_t	x;
-	
+	ssize_t	x;
+
 	x = read(fd, str, BUFFER_SIZE);
+	//printf("\e[0;34mread = %s \n\e[0;37m", str);
 	return (x);
 }
-char	*get_next_line(int fd)
-{
-	static char		*buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char *));
-	char			*str;
-	static size_t	i = 0;
-	size_t			o;
-	//static size_t	nbr_str;
 
-	if (!fd)
-		return (0);
-	if (!read_fd(fd, buffer))
-	{
-		free (buffer);
-		return (0);
-	}
-	o = get_line_size(buffer);
-	str = (char *)malloc((o + 1) * sizeof(char *));
-	i = buf_to_str(str, buffer, i);
+size_t	buffer_end(size_t i, char *str)
+{
 	if (i != 0)
 	{
-		*buffer += i + 1;
+		*str += i + 1;
 		i = 0;
 	}
-	else if (i == 0 && str[o] != '\n')
+	return (i);
+}
+
+
+char	*get_next_line(int fd)
+{
+	static char		*buffer;
+	static char		*str;
+	static char		*str2;
+	static size_t	i = 0;
+	ssize_t			o;
+
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char *));
+	if (!fd || !buffer)
+		return (0);
+	if (str)
+		free (str);
+	if (!buffer[0])
 	{
-		if (!read_fd(fd, buffer))
-			return(str);
-		i = buf_to_str(&str[o + 1], buffer, i);
+		o = read_fd(fd, buffer);
+		if (o < 1)
+		{
+			free (buffer);
+			return (0);
+		}
 	}
+	o = line_size(buffer);
+	str = (char *)malloc((o + 1) * sizeof(char *));
+	if (!str)
+		return (0);
+	i = buf_to_str(str, buffer, i);
+	//printf("\nbuffer = %s\tstr = %s\n", buffer, str);
+	i = buffer_end(i, buffer);
+	while (i == 0 && str[o] != '\n')
+	{
+		o = read_fd(fd, buffer);
+		//printf("2buffer = %s\tstr = %s\n", buffer, str);
+		if (o < 1)
+		{
+			//printf("\nif do while\t\tstr = %s\n", str);
+			free (buffer);
+			return (str);
+		}
+		str2 = (char *)malloc((line_size(str)) * sizeof(char *));
+		if (!str2)
+		{
+			//printf("\n\n\t\t\t\tERROR str2\n\n\n");
+			free (buffer);
+			return (str);
+		}
+		ft_strlcpy(str2, str, 0);
+		free (str);
+		str = (char *)malloc(sizeof(char *) * (o + line_size(str2) + 1));
+		o = ft_strlcpy(str, str2, 0);
+		i = buf_to_str(&str[o], buffer, 0);
+		i = buffer_end(i, buffer);
+		//printf("BUffer = %s\n", buffer);
+		o = line_size(str);
+		//printf("3buffer = %s\tstr = %s\n", buffer, str);
+	}
+/* 	else if (i == 0 && str[o] != '\n')
+	{
+		while (str[o] != '\n')
+		{
+			o = read_fd(fd, buffer);
+	//printf("2buffer = %s\tstr = %s\n", buffer, str);
+			if (o < 1)
+			{
+				//printf("\nif do while\n");
+				free (buffer);
+				return (str);
+			}
+			str2 = (char *)malloc((line_size(str)) * sizeof(char *));
+			if (!str2)
+			{
+				//printf("\n\n\t\t\t\tERROR str2\n\n\n");
+				free (buffer);
+				return (str);
+			}
+			ft_strlcpy(str2, str, 0);
+			free (str);
+			str = (char *)malloc(sizeof(char *) * (o + line_size(str2) + 1));
+			ft_strlcpy(str, str2, 0);
+			i = buf_to_str(&str[o], buffer, 0);
+			o = line_size(str);
+	//printf("3buffer = %s\tstr = %s\n", buffer, str);
+		}
+	} */
 	return (str);
 }
