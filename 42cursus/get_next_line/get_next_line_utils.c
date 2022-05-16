@@ -6,11 +6,12 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/16 02:19:27 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:45:19 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 /* Copy buffer to string until \n  is found (return index of buffer after \n).
 Or buffer ends (return 0 as index of buffer).*/
@@ -90,7 +91,7 @@ int	check_binary(const char *str)
 			++i;
 			continue ;
 		}
-		else if (str[i] < 31 && str[i] > 1)
+		else if ((str[i] < 31 && str[i] > 1) || str[i] == 127)
 		{
 			return (0);
 		}

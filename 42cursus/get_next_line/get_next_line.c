@@ -6,13 +6,12 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/16 02:19:18 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:44:46 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-#include <string.h>
 
 char	*get_next_line(int fd)
 {
@@ -60,12 +59,16 @@ char	*get_next_line(int fd)
 		{
 			//printf("\e[1;92mread failed in while \n\e[0m");
 			free (buffer);
+			if (!check_binary(str))
+				return (0);
 			return (str);
 		}
 		str2 = (char *)malloc((ft_strlen(str)) * sizeof(char *));
 		if (!str2)
 		{
 			free (buffer);
+			if (!check_binary(str))
+				return (0);
 			return (str);
 		}
 		ft_strlcpy(str2, str, 0);
