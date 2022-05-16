@@ -15,26 +15,55 @@
 
 int	main(void)
 {
-	int		fd;
+	int		fd1;
+	int		fd2;
 	char	*str;
 
-	fd = open("text.txt", O_RDONLY);
-	if (fd == -1)
+	fd1 = open("text.txt", O_RDONLY);
+	if (fd1 == -1)
 	{
-		printf("Open failed.\n");
+		printf("Open 1 failed.\n");
 		return (1);
 	}
+
+	fd2 = open("a.out", O_RDONLY);
+	if (fd2 == -1)
+	{
+		printf("Open 2 failed.\n");
+		return (1);
+	}
+
 	do
 	{
-		str = get_next_line(fd);
-		
-		printf("\e[0;31mMAIN = |%s|\e[0;37m", str);
-		
+		str = get_next_line(fd1);
+		if (str)
+		{
+			printf("\e[0;31mMAIN = |%s|\e[0;37m", str);
+			getchar ();
+		}
 	} while (str);
-	if (close(fd) == -1)
+	free (str);
+
+	do
 	{
-		printf("Close failed.\n");
+		str = get_next_line(fd2);
+		if (str)
+		{
+			printf("\e[0;31mMAIN = |%s|\e[0;37m", str);
+			getchar ();
+		}
+	} while (str);
+	free (str);
+	
+	if (close(fd1) == -1)
+	{
+		printf("Close 1 failed.\n");
 		return (1);
 	}
+	if (close(fd2) == -1)
+	{
+		printf("Close 2 failed.\n");
+		return (1);
+	} 
 	return (0);
 }

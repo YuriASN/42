@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:04 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/04/25 21:13:52 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/16 02:19:48 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-//size_t	get_line_size(int fd);
+size_t	ft_strlen(const char *str);
+size_t	buf_to_str(char *dst, char *src, size_t i);
+size_t	part_size(const char *str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t src_start);
+int		check_binary(const char *str);
 
 #endif
