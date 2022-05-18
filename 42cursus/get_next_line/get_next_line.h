@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:04 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/16 02:19:48 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/17 19:29:38 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 size_t	buf_to_str(char *dst, char *src, size_t i);
 size_t	part_size(const char *str);
-size_t	ft_strlcpy(char *dst, const char *src, size_t src_start);
+size_t	str_swap(char *dst, char *src, size_t src_start);
 int		check_binary(const char *str);
 
 #endif

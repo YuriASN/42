@@ -6,15 +6,14 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/16 02:45:19 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:15:34 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-/* Copy buffer to string until \n  is found (return index of buffer after \n).
-Or buffer ends (return 0 as index of buffer).*/
+/* Copy buffer to string until \n  is found (return index of buffer after \n)
+or buffer ends (return 0 as index of buffer).*/
 size_t	buf_to_str(char *dst, char *src, size_t i)
 {
 	size_t	o;
@@ -40,7 +39,7 @@ size_t	buf_to_str(char *dst, char *src, size_t i)
 	return (i);
 }
 
-//Count partial size of line (either until \n or end of string).
+//Count partial size of string (either until \n or end of string).
 size_t	part_size(const char *str)
 {
 	size_t		count;
@@ -62,8 +61,8 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-//Copy src to dst and return final size of dst.
-size_t	ft_strlcpy(char *dst, const char *src, size_t src_start)
+//Copy src to dst and return final size of dst, and free src.
+size_t	str_swap(char *dst, char *src, size_t src_start)
 {
 	size_t	i;
 
@@ -75,9 +74,11 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t src_start)
 		++src_start;
 	}
 	dst[i] = '\0';
+	free (src);
 	return (i);
 }
 
+//Check if FD given is a binary file.
 int	check_binary(const char *str)
 {
 	size_t	i;
