@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/18 22:15:34 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/23 00:36:18 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,29 +74,26 @@ size_t	str_swap(char *dst, char *src, size_t src_start)
 		++src_start;
 	}
 	dst[i] = '\0';
-	free (src);
+	free_end(src, NULL);
 	return (i);
 }
 
-//Check if FD given is a binary file.
-int	check_binary(const char *str)
+//Free str and set pointer to NULL and return 0 always
+void	*free_end(char *str, char *str2)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i])
+	if (str)
 	{
-		if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		{
-			++i;
-			continue ;
-		}
-		else if ((str[i] < 31 && str[i] > 1) || str[i] == 127)
-		{
-			return (0);
-		}
-		++i;
+		printf("\e[0;36mstr1 to free = |%s|\e[0m\n", str);
+		free(str);
+		*str = 0;
+		if (str == NULL)
+			printf("YES\n");
 	}
-	return (1);
+	if (str2)
+	{
+		printf("\e[0;36mstr2 to free = |%s|\e[0m\n", str2);
+		free(str2);
+		*str2 = 0;
+	}
+	return (NULL);
 }

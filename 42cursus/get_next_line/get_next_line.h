@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:04 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/17 19:29:38 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/23 00:33:31 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ size_t	ft_strlen(const char *str);
 size_t	buf_to_str(char *dst, char *src, size_t i);
 size_t	part_size(const char *str);
 size_t	str_swap(char *dst, char *src, size_t src_start);
-int		check_binary(const char *str);
+void	*free_end(char *str, char *str2);
 
 #endif
