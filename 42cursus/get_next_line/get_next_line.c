@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/23 00:48:02 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/30 17:30:15 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ static int	check_binary(const char *str)
 		}
 		else if ((str[i] < 31 && str[i] > 1) || str[i] == 127)
 		{
-			return (0);
+			printf("is binary\n");
+			return (1);
 		}
 		++i;
 	}
-	return (1);
+	return (0);
 }
 
 /* Use read and set last byte of string to NULL. Returns same as read
@@ -68,8 +69,6 @@ static char	*continue_str(int fd, char *str, char *buffer, ssize_t *i)
 		return (free_end(str2, buffer));
 	str_swap(str, str2, 0);
 	*i = buf_to_str(&str[ft_strlen(str)], buffer, 0);
-	if (!check_binary(str))
-		return (free_end(buffer, str));
 	return (str);
 }
 
@@ -98,5 +97,7 @@ char	*get_next_line(int fd)
 		str = continue_str(fd, str, buffer, &i);
 	if (i == 0 && str[ft_strlen(str) - 1] == '\n')
 		read_n_check(fd, buffer, &i);
+	if (check_binary(str))
+		return (free_end(str, NULL));
 	return (str);
 }

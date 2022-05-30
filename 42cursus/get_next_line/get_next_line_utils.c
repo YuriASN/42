@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/23 00:36:18 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:41:50 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,15 @@ void	*free_end(char *str, char *str2)
 {
 	if (str)
 	{
-		printf("\e[0;36mstr1 to free = |%s|\e[0m\n", str);
-		free(str);
 		*str = 0;
-		if (str == NULL)
-			printf("YES\n");
+		free(str);
+		str = 0;
 	}
 	if (str2)
 	{
-		printf("\e[0;36mstr2 to free = |%s|\e[0m\n", str2);
-		free(str2);
 		*str2 = 0;
+		free(str2);
+		str2 = 0;
 	}
 	return (NULL);
 }
