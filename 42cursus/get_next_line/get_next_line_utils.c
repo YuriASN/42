@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/30 15:41:50 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/01 22:13:24 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,19 @@ void	*free_end(char *str, char *str2)
 {
 	if (str)
 	{
-		*str = 0;
+		//printf("before everything: \"%s\"\n", str);
 		free(str);
-		str = 0;
+		//printf("after free: \"%s\"\n", str);
+		//*str = 0;
+		//printf("after *x=null: \"%s\"\n", str);
+		str = NULL;
+		//printf("after x=null: \"%s\"\n\n", str);
 	}
 	if (str2)
 	{
-		*str2 = 0;
 		free(str2);
-		str2 = 0;
+		//*str2 = 0;
+		str2 = NULL;
 	}
 	return (NULL);
 }

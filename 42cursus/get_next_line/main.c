@@ -30,7 +30,7 @@ void	read_all(int fd)
 int	main(void)
 {
 	int		fd[16];
-	//int		byn;
+	int		byn;
 	int		i;
 
 	fd[0] = open("text.txt", O_RDONLY);
@@ -50,7 +50,7 @@ int	main(void)
 	fd[14] = open("42cursus/get_next_line/gnlTester/files/multiple_nlx5", O_RDONLY);
 	fd[15] = open("42cursus/get_next_line/gnlTester/files/nl", O_RDONLY);
 
-	for (i = 0; i < 17; ++i)
+	for (i = 0; i < 16; ++i)
 	{
 		printf("\e[4;33mFD%i\e[0m\n", i);
 		if (fd[i] == -1)
@@ -65,7 +65,8 @@ int	main(void)
 			return (1);
 		}
 	}
-	/* byn = open("a.out", O_RDONLY);
+	printf("\n\e[0;92mEnd of regular files\t~\t~\t~\tBinary test\e[0m\n\n");
+	byn = open("a.out", O_RDONLY);
 	if (byn == -1)
 	{
 		printf("Open 2 failed.\n");
@@ -84,6 +85,6 @@ int	main(void)
 	{
 		printf("Close byn failed.\n");
 		return (1);
-	} */
+	}
 	return (0);
 }

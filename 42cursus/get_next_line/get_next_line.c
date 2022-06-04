@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/05/30 17:30:15 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/01 22:16:20 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	check_binary(const char *str)
 		}
 		else if ((str[i] < 31 && str[i] > 1) || str[i] == 127)
 		{
-			printf("is binary\n");
 			return (1);
 		}
 		++i;
@@ -45,10 +44,12 @@ static ssize_t	read_n_check(int fd, char *str, ssize_t *i)
 	c = read(fd, str, BUFFER_SIZE);
 	if (c <= 0)
 	{
+		printf("free buffer\t");
 		*i = -1;
 		free_end(str, NULL);
 	}
 	str[c] = '\0';
+	printf("c: %lu\n", c);
 	return (c);
 }
 
@@ -78,10 +79,14 @@ char	*get_next_line(int fd)
 	static char		*str;
 	static ssize_t	i = BUFFER_SIZE + 1;
 
-	if (str)
+	if (i <= BUFFER_SIZE && str)
 		free_end(str, NULL);
 	if (!fd || BUFFER_SIZE < 1 || i < 0)
+	{
+		printf("i > BUFFER_SIZE\n");
+		i = BUFFER_SIZE + 1;
 		return (0);
+	}
 	if (i > BUFFER_SIZE)
 	{
 		buffer = (char *) malloc((i) * sizeof(char *));
