@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:15:32 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/03/30 22:57:38 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:43:45 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ MANDATORY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -78,5 +81,11 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ EXTRAS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+char	*get_next_line(int fd);
+int		has_newline(char *buffer);
+char	*bufferjoin(char *str, char *buffer);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/28 19:23:52 by ysantos-          #+#    #+#              #
-#    Updated: 2022/03/30 00:37:12 by ysantos-         ###   ########.fr        #
+#    Updated: 2022/06/05 18:41:18 by ysantos-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
 ft_memchr.c ft_tolower.c ft_memcmp.c ft_toupper.c ft_memcpy.c libft.h ft_memmove.c
 
 BN = ft_lstadd_front.c ft_lstadd_back.c ft_lstclear.c ft_lstdelone.c \
-ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c get_next_line_bonus.c \
+get_next_line_utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
 BNOBJ = $(BN:.c=.o)
