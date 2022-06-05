@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/06/05 18:18:07 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:10:33 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-/* Check if buffer has newline. If it has it moves
-the byte after newline to buffer[0] and returns TRUE.
-if not it erases all bytes of buffer and return FALSE*/
 int	has_newline(char *buffer)
 {
 	int	i;
@@ -33,7 +30,6 @@ int	has_newline(char *buffer)
 	return (j >= 0);
 }
 
-//Count the size of string until \n or the end.
 static int	part_str(char *str)
 {
 	int	i;
@@ -50,7 +46,6 @@ static int	part_str(char *str)
 	return (i);
 }
 
-//Returns a pointer to the result of concatenation of string and buffer.
 char	*strjoin(char *str, char *buffer)
 {
 	int		j;
