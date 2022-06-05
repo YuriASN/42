@@ -6,12 +6,13 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 19:15:32 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/06/05 18:43:45 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 20:05:37 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFFER_SIZE 40
 
 # include <stdio.h>
 # include <stdlib.h>
