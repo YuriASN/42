@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 00:59:28 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/06/05 18:11:46 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:33:55 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 		if (!buffer[fd][0])
 			i = read(fd, buffer[fd], BUFFER_SIZE);
 		if (i > 0)
-			str = strjoin(str, buffer[fd]);
+			str = bufferjoin(str, buffer[fd]);
 		if (has_newline(buffer[fd]))
 			break ;
 	}

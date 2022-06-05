@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:19:04 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/06/05 18:10:25 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:33:47 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 
 char	*get_next_line(int fd);
 int		has_newline(char *buffer);
-char	*strjoin(char *str, char *buffer);
+char	*bufferjoin(char *str, char *buffer);
 
 #endif

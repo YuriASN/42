@@ -6,7 +6,7 @@
 /*   By: ysantos- <ysantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:17:56 by ysantos-          #+#    #+#             */
-/*   Updated: 2022/06/05 18:18:07 by ysantos-         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:33:11 by ysantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	part_str(char *str)
 }
 
 //Returns a pointer to the result of concatenation of string and buffer.
-char	*strjoin(char *str, char *buffer)
+char	*bufferjoin(char *str, char *buffer)
 {
 	int		j;
 	char	*temp;
