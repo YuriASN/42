@@ -41,6 +41,11 @@ int	f_putnbr_u(unsigned int n, char *str, LLONG base)
 
 int	f_putnbr_ul(unsigned long n)
 {
+	if (n == 0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	int			count;
 	long long	n2;
 
