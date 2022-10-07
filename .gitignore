@@ -4,3 +4,6 @@
 *.exe
 42cursus/libft/testers/*
 .vscode
+.normignore
+.gitmodules
+
