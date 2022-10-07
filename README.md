@@ -1,4 +1,5 @@
-Personal git repository.
-Feel free to check it out but be aware of errors, usually they are explicit on the commit.
+Repository of all my 42 projects.
 
-Keep swimming
+Piscine projects may contain errors, if you are/were a pisciner you will understand it ;)
+
+Keep swimming!
