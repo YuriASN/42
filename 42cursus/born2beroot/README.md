@@ -1,3 +1,30 @@
+# ***BORN TO BE ROOT***
+
+This file will go step by step on how to create a virtual machine under specifics rules.</br>
+
+Topic:
+
+1.	[Creating a Virtual Machine](#creating-a-virtual-machine)</br>
+
+2.	[Installing OS](#installing-os)</br>
+	- [Bonus Partitions](#the-following-goes-for-bonus-partitions)</br>
+
+3.	[Configurating the Virtual Machine](#configurating-the-virtual-machine)</br>
+	- [Update package index and Upgrade them](#update-package-index-and-upgrade-packages)</br>
+	- [Aptitude install](#aptitude-install)</br>
+	- [Sudo install and config](#sudo-install-and-config)</br>
+	- [Setup password policy](#setup-password-policy)</br>
+	- [Firewall](#firewall)</br>
+	- [SSH](#ssh)</br>
+	- [Monitoring info](#monitoring-info)</br>
+
+4.	[Explanations for avaliation](#avaliations)</br>
+	- 
+	- 
+	- 
+	- 
+	- 
+
 #	Creating a Virtual Machine.
 
 1.	Create new VM. Name it, and select appropriate OS.
@@ -28,7 +55,7 @@ Run the Virtual Machine
 
 ## The following goes for **Bonus partitions**.
 
-4.	Manual Partition.<br/>
+1.	Manual Partition.<br/>
 	Select disk. "create new empty partition on this device?" YES<br/>
 	/boot<br/>
 	pri/log<br/>
@@ -40,7 +67,7 @@ Run the Virtual Machine
 	/boot<br/>
 	Done<br/>
 
-5.	Create new partition<br/>
+2.	Create new partition<br/>
 	pri/log<br/>
 	Create a new partition<br/>
 	"max"<br/>
@@ -48,7 +75,7 @@ Run the Virtual Machine
 	Mount Point -Do not mount it<br/>
 	Done<br/>
 
-6.	Configure encrypted volumes<br/>
+3.	Configure encrypted volumes<br/>
 	Yes<br/>
 	Create encrypted volumes<br/>
 	/dev/sda5<br/>
@@ -57,7 +84,7 @@ Run the Virtual Machine
 	Erase data? YES<br/>
 	Set password<br/>
 
-7.	Configure the Logical Volume Manager<br/>
+4.	Configure the Logical Volume Manager<br/>
 	Yes<br/>
 	Create volume group<br/>
 	LVMGroup<br/>
@@ -65,7 +92,7 @@ Run the Virtual Machine
 	Create logical volume<br/>
 	root, swap, home, var, srv, tmp, var-log<br/>
 
-8.	Select partitions and place them as:<br/>
+5.	Select partitions and place them as:<br/>
 ```
 	home #1		|	Ext4		|	/home
 	root #1		|	Ext4		|	/
@@ -76,30 +103,31 @@ Run the Virtual Machine
 	var-log #1	|	Ext4		|	/var/log
 ```
 
-9.	Finish...</br>
+6.	Finish...</br>
 	YES
 
-10. Scan extra media?<br/>
+7. Scan extra media?<br/>
 	NO
 
-11.	Proxy -empty
+8.	Proxy -empty
 
-12.	Unselect all softwares leaving only Core Debian.
+9.	Unselect all softwares leaving only Core Debian.
 
-13.	Install GRUB
+10.	Install GRUB
 
 
 #	Configurating the Virtual Machine
 ### **Tip**: During configuration log as root so you don't have to "***sudo***" every command.
 
 
-##	Update package index and Upgrade packages
+##	Update package index and Upgrade them
 ```
 apt update
 apt ugrade
 ```
 
-##	Aptitude install.
+##	Aptitude install
+Following commands install Aptitude, update packages and upgrade packages.
 ```
 apt install aptitude
 aptitude update
@@ -239,4 +267,6 @@ Schedule it for every minute multiple of 10 and 15 seconds after reboot.</br>
 ```
 You can see more availables schedules at [Crontab Guru](https://crontab.guru/crontab.5.html).
 
-# BONUS
+# Avaliation
+
+## 
