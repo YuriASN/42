@@ -8,7 +8,7 @@
 
 ## Load the Debian Image to the VM.
 
-1.	Settings -> Storage
+1.	Settings -Storage
 
 2.	Under "Controller: IDE" select the disk and open the OS iso file.
 
@@ -45,7 +45,7 @@ Run the Virtual Machine
 	Create a new partition<br/>
 	"max"<br/>
 	Logical<br/>
-	Mount Point -> Do not mount it<br/>
+	Mount Point -Do not mount it<br/>
 	Done<br/>
 
 6.	Configure encrypted volumes<br/>
@@ -82,7 +82,7 @@ Run the Virtual Machine
 10. Scan extra media?<br/>
 	NO
 
-11.	Proxy -> empty
+11.	Proxy -empty
 
 12.	Unselect all softwares leaving only Core Debian.
 
@@ -145,22 +145,23 @@ After "*retry=3*" on the 1st uncommented line add:
 reject_username difok=7 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 enforce_for_root
 ```
 </br>
-**Policies descriptions**:
+**Policies descriptions**: </br>
+
 > minlen		= minimum password length.<br>
-> minclass	= the minimum number of character types that must be used (i.e., uppercase, lowercase, digits, other).<br>
-> maxrepeat	= the maximum number of times a single character may be repeated.<br>
-> maxclassrepeat	= the maximum number of characters in a row that can be in the same class.<br>
-> lcredit		= maximum number of lowercase characters that will generate a credit.<br>
-> ucredit		= maximum number of uppercase characters that will generate a credit.<br>
-> dcredit		= maximum number of digits that will generate a credit.<br>
-> ocredit		= maximum number of other characters that will generate a credit.<br>
-> difok		= the minimum number of characters that must be different from the old password.<br>
-> remember	= the number of passwords that will be remembered by the system so that they cannot be used again<br>
-> gecoscheck	= whether to check for the words from the passwd entry GECOS string of the user (enabled if the value is not 0)<br>
-> dictcheck	= whether to check for the words from the cracklib dictionary (enabled if the value is not 0)<br>
-> usercheck	= whether to check if the password contains the user name in some form (enabled if the value is not 0)<br>
-> enforcing	= new password is rejected if it fails the check and the value is not 0<br>
-> dictpath	= path to the cracklib dictionaries. Default is to use the cracklib default.<br>
+minclass	= the minimum number of character types that must be used (i.e., uppercase, lowercase, digits, other).<br>
+maxrepeat	= the maximum number of times a single character may be repeated.<br>
+maxclassrepeat	= the maximum number of characters in a row that can be in the same class.<br>
+lcredit		= maximum number of lowercase characters that will generate a credit.<br>
+ucredit		= maximum number of uppercase characters that will generate a credit.<br>
+dcredit		= maximum number of digits that will generate a credit.<br>
+ocredit		= maximum number of other characters that will generate a credit.<br>
+difok		= the minimum number of characters that must be different from the old password.<br>
+remember	= the number of passwords that will be remembered by the system so that they cannot be used again<br>
+gecoscheck	= whether to check for the words from the passwd entry GECOS string of the user (enabled if the value is not 0)<br>
+dictcheck	= whether to check for the words from the cracklib dictionary (enabled if the value is not 0)<br>
+usercheck	= whether to check if the password contains the user name in some form (enabled if the value is not 0)<br>
+enforcing	= new password is rejected if it fails the check and the value is not 0<br>
+dictpath	= path to the cracklib dictionaries. Default is to use the cracklib default.<br>
 
 </br>
 Now `login.defs` to set expiration dates for new users, or when current users change their password.
@@ -217,7 +218,7 @@ sudo service ssh status
 ```
 To connect with your virtual machine using ssh:
 ```
-ssh <username>@<ip-address> -p 4242
+ssh <username>@<ip-address-p 4242
 ```
 Finish connection with `logout` or `exit`.
 
