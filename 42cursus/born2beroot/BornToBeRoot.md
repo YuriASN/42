@@ -1,12 +1,15 @@
 ##	Creating a Virtual Machine.
 
 1.	Create new VM. Name it, and select appropriate OS.
+
 2.	Select RAM size to be used (minimmum 1Gb).
+
 3.	Create a new Virtual Hard Disk as VDI and Dynamically allocated size.
 
 # Load the Debian Image to the VM.
 
 1.	Settings -> Storage
+
 2.	Under "Controller: IDE" select the disk and open the OS iso file.
 
 ## Installing OS.
@@ -23,7 +26,8 @@ Run the Virtual Machine
 	...<br/>
 	Timezone<br/>
 
-The following goes for **Bonus partitions**
+# The following goes for **Bonus partitions**.
+
 4.	Manual Partition.<br/>
 	Select disk. "create new empty partition on this device?" YES<br/>
 	/boot<br/>
@@ -62,13 +66,15 @@ The following goes for **Bonus partitions**
 	root, swap, home, var, srv, tmp, var-log<br/>
 
 8.	Select partitions and place them as:<br/>
-	home #1		|	Ext4		|	/home<br/>
-	root #1		|	Ext4		|	/<br/>
-	srv #1		|	Ext4		|	/srv<br/>
-	swap #1		|	swap area	|	N/A<br/>
-	tmp #1		|	Ext4		|	/tmp<br/>
-	var #1		|	Ext4		|	/var<br/>
-	var-log #1	|	Ext4		|	/var/log<br/>
+```
+	home #1		|	Ext4		|	/home
+	root #1		|	Ext4		|	/
+	srv #1		|	Ext4		|	/srv
+	swap #1		|	swap area	|	N/A
+	tmp #1		|	Ext4		|	/tmp
+	var #1		|	Ext4		|	/var
+	var-log #1	|	Ext4		|	/var/log
+```
 
 9.	Finish... YES
 
@@ -114,12 +120,14 @@ Set sudo logs location secure path and password policies.
 sudo mkdir /var/log/sudo
 sudo nano /etc/sudoers.d/sudoconfig
 ```
-`	Defaults    passwd_tries=3<br/>
-	Defaults    badpass_message="Take a deep breath and remember it. You only have 3 tries."<br/>
-	Defaults    log_input,log_output<br/>
-	Defaults    iolog_dir="/var/log/sudo"<br/>
-	Defaults    requiretty<br/>
-	Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"`
+```
+Defaults    passwd_tries=3
+Defaults    badpass_message="Take a deep breath and remember it. You only have 3 tries."
+Defaults    log_input,log_output
+Defaults    iolog_dir="/var/log/sudo"
+Defaults    requiretty
+Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
 
 ## Setup password policy
 Install the *Password Quality Check Lib* to add more options to pass policy<br/>
