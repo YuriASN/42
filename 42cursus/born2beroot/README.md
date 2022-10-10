@@ -90,7 +90,7 @@ Run the Virtual Machine
 
 
 #	Configurating the Virtual Machine
-### **Tip**: During configuration log as root so you don't have to "*sudo*" every command.
+### **Tip**: During configuration log as root so you don't have to "***sudo***" every command.
 
 
 ##	Update package index and Upgrade packages
@@ -106,10 +106,12 @@ aptitude update
 aptitude safe-upgrade
 ```
 To check if any package is installed run
-``` dpkg -l | grep PACKAGE NAME ```
+```
+dpkg -l | grep PACKAGE NAME
+```
 
 ##	Sudo install and config
-Create group *user42* and add users to both groups
+Create group ***user42*** and add users to both groups
 ```
 aptitude install sudo
 sudo addgroup user42
@@ -132,7 +134,7 @@ Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin
 ```
 
 ## Setup password policy
-Install the *Password Quality Check Lib* to add more options to pass policy
+Install the ***Password Quality Check Lib*** to add more options to pass policy
 ```
 aptitude install libpam-pwquality
 ```
@@ -140,11 +142,12 @@ Edit the file to add the desired policies.
 ```
 sudo nano /etc/pam.d/common_password
 ```
-After "*retry=3*" on the 1st uncommented line add:
+After "***retry=3***" on the 1st uncommented line add:
 ```
 reject_username difok=7 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 enforce_for_root
 ```
 </br>
+
 **Policies descriptions**: </br>
 
 > minlen		= minimum password length.<br>
@@ -168,7 +171,7 @@ Now `login.defs` to set expiration dates for new users, or when current users ch
 ```
 sudo nano /etc/login.defs
 ```
-Look for PASS_MAX_DAYS and change to:
+Look for ***PASS_MAX_DAYS*** and change to:
 ```
 PASS_MAX_DAYS	30
 PASS_MIN_DAYS	2
@@ -206,7 +209,7 @@ Install SSH service.
 aptitude install openssh-server
 ```
 
-Setup ssh port
+Setup ssh port.
 In the file below, at **line 13**, uncomment and set the wanted value (4242).<br/>
 To disable ssh connection as root, in **line 32** uncomment and set, `PermitRootLogin no`.
 ```
@@ -223,7 +226,7 @@ ssh <username>@<ip-address-p 4242
 Finish connection with `logout` or `exit`.
 
 ## Monitoring info
-First create the bash script (check the monitoring.sh file)</br>
+First create the bash script (check the [monitoring.sh](https://github.com/YuriASN/42/blob/master/42cursus/born2beroot/monitoring.sh) file).</br>
 Opens the file to schedule the desired command:
 ```
 crontab -e
@@ -234,6 +237,6 @@ Schedule it for every minute multiple of 10 and 15 seconds after reboot.</br>
 @reboot sleep 15 && bash FILE_PATH
 */10 * * * * bash /root/monitoring.sh
 ```
-You can see more availables schedules at [Crontab Guru](https://crontab.guru/crontab.5.html)
+You can see more availables schedules at [Crontab Guru](https://crontab.guru/crontab.5.html).
 
 # BONUS
