@@ -2,7 +2,7 @@
 
 ARCH=$(uname -a)
 
-PPROCSS=$(lscpu | grep Socket(s) | awk '{print $2}')
+PPROCSS=$(lscpu | grep "Socket(s)" | awk '{print $2}')
 
 VPROCSS=$(lscpu | sed -n '5p' | awk '{print $2}')
 
@@ -26,7 +26,7 @@ USERS=$(w | sed -n '1p' | cut -d " " -f 7)
 
 IPADDRS=$(hostname -I)
 
-MACADDRS=$(ip -o link show | cut -d " " -f 20 | sed -n '2p')
+MACADDRS=$(ip -o link | cut -d " " -f 20 | sed -n '2p')
 
 SUDO=$(journalctl _COMM=sudo | GREP -c "COMMAND")
 
