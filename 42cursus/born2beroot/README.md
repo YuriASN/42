@@ -10,7 +10,7 @@ Topic:
 	- [Bonus Partitions](#the-following-goes-for-bonus-partitions)</br>
 
 3.	[Configurating the Virtual Machine](#configurating-the-virtual-machine)</br>
-	- [Update package index and Upgrade them](#update-package-index-and-upgrade-packages)</br>
+	- [Update package index and Upgrade them](#update-package-index-and-upgrade-them)</br>
 	- [Aptitude install](#aptitude-install)</br>
 	- [Sudo install and config](#sudo-install-and-config)</br>
 	- [Setup password policy](#setup-password-policy)</br>
@@ -123,7 +123,7 @@ Run the Virtual Machine
 ##	Update package index and Upgrade them
 ```
 apt update
-apt ugrade
+apt upgrade
 ```
 
 ##	Aptitude install
@@ -194,12 +194,14 @@ usercheck	= whether to check if the password contains the user name in some form
 enforcing	= new password is rejected if it fails the check and the value is not 0<br>
 dictpath	= path to the cracklib dictionaries. Default is to use the cracklib default.<br>
 
-</br>
 Now `login.defs` to set expiration dates for new users, or when current users change their password.
+
 ```
 sudo nano /etc/login.defs
 ```
+
 Look for ***PASS_MAX_DAYS*** and change to:
+
 ```
 PASS_MAX_DAYS	30
 PASS_MIN_DAYS	2
