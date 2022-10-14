@@ -2,7 +2,7 @@
 
 This file will go step by step on how to create a virtual machine under specifics rules.</br>
 
-Topic:
+### Topic:
 
 1.	[Creating a Virtual Machine](#creating-a-virtual-machine)</br>
 
@@ -33,7 +33,7 @@ Topic:
 
 3.	Create a new Virtual Hard Disk as VDI and Dynamically allocated size.
 
-## Load the Debian Image to the VM.
+### Load the Debian Image to the VM.
 
 1.	Settings -Storage
 
@@ -243,15 +243,15 @@ Setup ssh port.
 In the file below, at **line 13**, uncomment and set the wanted value (4242).<br/>
 To disable ssh connection as root, in **line 32** uncomment and set, `PermitRootLogin no`.
 ```
-sudo nano /etc/ssh/sshd_config
+nano /etc/ssh/sshd_config
 ```
 Reboot the system and check changes.
 ```
-sudo service ssh status
+service ssh status
 ```
 To connect with your virtual machine using ssh:
 ```
-ssh <username>@<ip-address-p 4242
+ssh <username>@<ip-address>
 ```
 Finish connection with `logout` or `exit`.
 
@@ -269,6 +269,154 @@ Schedule it for every minute multiple of 10 and 15 seconds after reboot.</br>
 ```
 You can see more availables schedules at [Crontab Guru](https://crontab.guru/crontab.5.html).
 
-# Avaliation
 
-## 
+
+
+
+
+
+
+
+# ***Evaluation***
+We will use the **sudo** command as we will be logged as our user.
+
+## All about
+### What is a Virtual Machine and it's propouse
+
+### CentOS vs. Debian
+
+
+To see what system is installed run:
+```
+sudo uname -v
+```
+
+### APT vs. Aptitude
+
+### APPArmor
+
+### Check boot services
+To check if SSH and UFW are running:
+```
+sudo ufw status
+sudo service ssh status
+```
+
+## Users
+Check the groups a user is in
+```
+sudo groups <USERNAME>
+```
+Create a new user
+```
+sudo adduser <USERNAME>
+```
+Create a new group
+```
+sudo addgroup <GROUPNAME>
+```
+Add new user to new group
+```
+sudo adduser <USERNAME> <GROUPNAME>
+```
+*To delete a group or user, just change `add` for `del`.*
+
+### Advantages and Disadvantages of a strong password policy
+
+## Hostname
+Check the hostname of the machine
+```
+sudo hostname
+```
+Change hostname
+```
+sudo hostname <NEWNAME>
+```
+#Check if `/etc/hostname` has the new host and `/etc/hosts` has new and non of the old. If they have the old do
+```
+sed -i 's/<OLDHOST>/<NEWHOST/g' /etc/hostname
+sed -i 's/<OLDHOST>/<NEWHOST/g' /etc/hosts
+```
+
+## Partitions
+
+### What is LVM?
+
+List all partitions
+```
+lsblk -l
+```
+
+## Sudo
+
+### What is SUDO?
+</br>
+
+### Commands
+Check sudo installation
+```
+dpkg -l | grep sudo
+```
+Add new user to sudo group
+```
+sudo adduser <NEWUSER> sudo
+```
+
+## UFW
+
+### What is UFW?
+</br>
+
+### Commands
+Check if it is installed
+```
+sudo dpkg -l | grep ufw
+```
+Check it's status
+```
+sudo ufw status
+```
+What is UFW and why use it.</br>
+Open ports
+```
+sudo ufw allow <PortNumber>
+```
+Disable ports
+```
+sudo ufw status numbered
+sudo ufw delete <RuleNumber>
+```
+
+## SSH
+
+### What is SSH?
+
+SSH or Secure Socket Shell, is a network protocol that gives users a secure way to access a computer using a usecured network.</br>
+It uses a password and public key authenticantions to provide a encripted connection to a computer, allowing then to execute commands and moving files between them.</br>
+### Commands
+Check installation
+```
+ssh -V
+```
+Check status
+```
+sudo service ssh status
+```
+Log into Newuser
+```
+ssh <NEWUSER>@<ip-address>
+```
+To finish connection run `exit` or `logout`.
+
+## Script Monitoring
+
+### What is Cron?
+How it works
+What cron is
+How to run every 10 minutes
+### How to start and stop a cron job
+```
+sudo service cron start
+sudo service cron stop
+sudo service cron restart
+```
