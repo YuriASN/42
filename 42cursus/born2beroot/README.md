@@ -18,16 +18,9 @@ This file will go step by step on how to create a virtual machine under specific
 	- [SSH](#ssh)</br>
 	- [Monitoring info](#monitoring-info)</br>
 
-4.	[Explanations for avaliation](#avaliations)</br>
-	- 
-	- 
-	- 
-	- 
-	- 
-
 #	Creating a Virtual Machine.
 
-1.	Create new VM. Name it, and select appropriate OS.
+1.	Create new VM, name it, and select appropriate OS.
 
 2.	Select RAM size to be used (minimmum 1Gb).
 
@@ -35,7 +28,7 @@ This file will go step by step on how to create a virtual machine under specific
 
 ### Load the Debian Image to the VM.
 
-1.	Settings -Storage
+1.	Settings -> Storage
 
 2.	Under "Controller: IDE" select the disk and open the OS iso file.
 
@@ -56,7 +49,7 @@ Run the Virtual Machine
 ## The following goes for **Bonus partitions**.
 
 1.	Manual Partition.<br/>
-	Select disk. "create new empty partition on this device?" YES<br/>
+	Select disk -> "create new empty partition on this device?" -> YES<br/>
 	/boot<br/>
 	pri/log<br/>
 	Create a new partition<br/>
@@ -72,7 +65,7 @@ Run the Virtual Machine
 	Create a new partition<br/>
 	"max"<br/>
 	Logical<br/>
-	Mount Point -Do not mount it<br/>
+	Mount Point -> Do not mount it<br/>
 	Done<br/>
 
 3.	Configure encrypted volumes<br/>
@@ -81,7 +74,7 @@ Run the Virtual Machine
 	/dev/sda5<br/>
 	Done<br/>
 	Finish<br/>
-	Erase data? YES<br/>
+	Erase data? -> YES<br/>
 	Set password<br/>
 
 4.	Configure the Logical Volume Manager<br/>
@@ -90,7 +83,7 @@ Run the Virtual Machine
 	LVMGroup<br/>
 	/dev/mapper/sda5_crypt<br/>
 	Create logical volume<br/>
-	root, swap, home, var, srv, tmp, var-log<br/>
+	root, swap, home, var, srv, tmp, var-log.<br/>
 
 5.	Select partitions and place them as:<br/>
 ```
@@ -104,27 +97,28 @@ Run the Virtual Machine
 ```
 
 6.	Finish...</br>
-	YES
+	<br>YES
 
 7. Scan extra media?<br/>
 	NO
 
-8.	Proxy -empty
+8.	Proxy -> empty
 
-9.	Unselect all softwares leaving only Core Debian.
+9.	Unselect all softwares leaving only `Core Debian`.
 
 10.	Install GRUB
 
-
+<br><br>
 #	Configurating the Virtual Machine
-### **Tip**: During configuration log as root so you don't have to "***sudo***" every command.
-
+**Tip**: During configuration log as root so you don't have to "***sudo***" every command.
+<br><br>
 
 ##	Update package index and Upgrade them
 ```
 apt update
 apt upgrade
 ```
+<br><br>
 
 ##	Aptitude install
 Following commands install Aptitude, update packages and upgrade packages.
@@ -135,18 +129,19 @@ aptitude safe-upgrade
 ```
 To check if any package is installed run
 ```
-dpkg -l | grep PACKAGE NAME
+dpkg -l | grep <PACKAGE_NAME>
 ```
+<br><br>
 
 ##	Sudo install and config
 Create group ***user42*** and add users to both groups
 ```
 aptitude install sudo
 sudo addgroup user42
-sudo adduser USERNAME sudo
-sudo adduser USERNAME user42
+sudo adduser <USERNAME> sudo
+sudo adduser <USERNAME> user42
 ```
-Set sudo logs location secure path and password policies.
+Set sudo logs location secure path and it's password policies.
 ```
 sudo mkdir /var/log/sudo
 sudo nano /etc/sudoers.d/sudoconfig
@@ -154,15 +149,16 @@ sudo nano /etc/sudoers.d/sudoconfig
 Paste the text bellow and save it.
 ```
 Defaults    passwd_tries=3
-Defaults    badpass_message="Take a deep breath and remember it. You only have 3 tries."
+Defaults    badpass_message="You really don't remember it? You only have 3 tries."
 Defaults    log_input,log_output
 Defaults    iolog_dir="/var/log/sudo"
 Defaults    requiretty
 Defaults    secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ```
+<br><br>
 
 ## Setup password policy
-Install the ***Password Quality Check Lib*** to add more options to pass policy
+Install the ***Password Quality Check Lib*** to add more options to password policy
 ```
 aptitude install libpam-pwquality
 ```
@@ -170,7 +166,7 @@ Edit the file to add the desired policies.
 ```
 sudo nano /etc/pam.d/common_password
 ```
-After "***retry=3***" on the 1st uncommented line add:
+After `retry=3` on the 1st uncommented line add:
 ```
 reject_username difok=7 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 enforce_for_root
 ```
@@ -194,7 +190,7 @@ usercheck	= whether to check if the password contains the user name in some form
 enforcing	= new password is rejected if it fails the check and the value is not 0<br>
 dictpath	= path to the cracklib dictionaries. Default is to use the cracklib default.<br>
 
-Now `login.defs` to set expiration dates for new users, or when current users change their password.
+Now open `login.defs` to set expiration dates for new users, or when current users change their password.
 
 ```
 sudo nano /etc/login.defs
@@ -210,12 +206,13 @@ PASS_WARN_DAYS	7
 
 To set the same config to existing users without changing current password:
 ```
-sudo chage --mindays 2 --maxdays 30 --warndays 7 USERNAME
+sudo chage --mindays 2 --maxdays 30 --warndays 7 <USERNAME>
 ```
 Check password status with:
 ```
-sudo chage --list USERNAME
+sudo chage --list <USERNAME>
 ```
+<br><br>
 
 ## Firewall
 
@@ -232,6 +229,7 @@ Check UFW status
 ```
 ufw status
 ```
+<br><br>
 
 ## SSH
 Install SSH service.
@@ -253,7 +251,8 @@ To connect with your virtual machine using ssh:
 ```
 ssh <username>@<ip-address>
 ```
-Finish connection with `logout` or `exit`.
+Finish connection with `logout` or `exit`.</br>
+<br><br>
 
 ## Monitoring info
 First create the bash script (check the [monitoring.sh](https://github.com/YuriASN/42/blob/master/42cursus/born2beroot/monitoring.sh) file).</br>
@@ -264,159 +263,9 @@ crontab -e
 Schedule it for every minute multiple of 10 and 15 seconds after reboot.</br>
 15 seconds are needed to login as the crontab runs before it.
 ```
-@reboot sleep 15 && bash FILE_PATH
-*/10 * * * * bash /root/monitoring.sh
+@reboot sleep 15 && bash <FILE_PATH>
+*/10 * * * * bash <FILE_PATH>
 ```
-You can see more availables schedules at [Crontab Guru](https://crontab.guru/crontab.5.html).
-
-
-
-
-
-
-
-
-
-# ***Evaluation***
-We will use the **sudo** command as we will be logged as our user.
-
-## All about
-### What is a Virtual Machine and it's propouse
-
-### CentOS vs. Debian
-
-
-To see what system is installed run:
-```
-sudo uname -v
-```
-
-### APT vs. Aptitude
-
-### APPArmor
-
-### Check boot services
-To check if SSH and UFW are running:
-```
-sudo ufw status
-sudo service ssh status
-```
-
-## Users
-Check the groups a user is in
-```
-sudo groups <USERNAME>
-```
-Create a new user
-```
-sudo adduser <USERNAME>
-```
-Create a new group
-```
-sudo addgroup <GROUPNAME>
-```
-Add new user to new group
-```
-sudo adduser <USERNAME> <GROUPNAME>
-```
-*To delete a group or user, just change `add` for `del`.*
-
-### Advantages and Disadvantages of a strong password policy
-
-## Hostname
-Check the hostname of the machine
-```
-sudo hostname
-```
-Change hostname
-```
-sudo hostname <NEWNAME>
-```
-#Check if `/etc/hostname` has the new host and `/etc/hosts` has new and non of the old. If they have the old do
-```
-sed -i 's/<OLDHOST>/<NEWHOST/g' /etc/hostname
-sed -i 's/<OLDHOST>/<NEWHOST/g' /etc/hosts
-```
-
-## Partitions
-
-### What is LVM?
-
-List all partitions
-```
-lsblk -l
-```
-
-## Sudo
-
-### What is SUDO?
-</br>
-
-### Commands
-Check sudo installation
-```
-dpkg -l | grep sudo
-```
-Add new user to sudo group
-```
-sudo adduser <NEWUSER> sudo
-```
-
-## UFW
-
-### What is UFW?
-</br>
-
-### Commands
-Check if it is installed
-```
-sudo dpkg -l | grep ufw
-```
-Check it's status
-```
-sudo ufw status
-```
-What is UFW and why use it.</br>
-Open ports
-```
-sudo ufw allow <PortNumber>
-```
-Disable ports
-```
-sudo ufw status numbered
-sudo ufw delete <RuleNumber>
-```
-
-## SSH
-
-### What is SSH?
-
-SSH or Secure Socket Shell, is a network protocol that gives users a secure way to access a computer using a usecured network.</br>
-It uses a password and public key authenticantions to provide a encripted connection to a computer, allowing then to execute commands and moving files between them.</br>
-### Commands
-Check installation
-```
-ssh -V
-```
-Check status
-```
-sudo service ssh status
-```
-Log into Newuser
-```
-ssh <NEWUSER>@<ip-address>
-```
-To finish connection run `exit` or `logout`.
-
-## Script Monitoring
-
-### What is Cron?
-How it works
-What cron is
-How to run every 10 minutes
-### How to start and stop a cron job
-```
-sudo service cron start
-sudo service cron stop
-sudo service cron restart
-```
+You can see more exemples of schedules at [Crontab Guru](https://crontab.guru/crontab.5.html).<br>
+<br>
+*For evaluation's questions you can see this [file](https://github.com/YuriASN/42/blob/master/42cursus/born2beroot/Evaluation.md).*
