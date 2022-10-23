@@ -33,7 +33,7 @@ SUDO=$(journalctl _COMM=sudo | GREP -c "COMMAND")
 wall "	#Architecture: $ARCH
 	#CPU physical: $PPROCSS
 	#vCPU: $VPROCSS
-	#Memory Usage: $RAMUSE ($RAMPERC%)
+	#Memory Usage: $RAMUSE ($RAMPEC%)
 	#Disk Usage: $DISK
 	#CPU load: $CPU%
 	#Last boot: $LSTRBT
