@@ -12,7 +12,7 @@ RAMPRC=$(free | sed -n '2p' | awk '{printf("%.2f"), $3/$2*100}')
 
 DISK=$(df -h --total | grep total | awk '{print $3 "/" $2 " (" $5 ")"}')
 
-CPU=$(vmstat | sed -n '3p' | awk '{print 100-$15}')
+CPU=$(uptime | awk '{print $9}' | sed 's/,//')
 
 LSTRBT=$(uptime -s | cut -d ":" -f 1,2)
 
