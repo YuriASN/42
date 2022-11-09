@@ -1,9 +1,4 @@
-42cursus/Aval/*
 *h.gch
 *.out
 *.exe
-42cursus/libft/testers/*
 .vscode
-.normignore
-.gitmodules
-

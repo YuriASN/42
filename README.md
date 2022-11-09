@@ -1,5 +1,6 @@
-Repository of all my 42 projects.
+Repository of 42 Lisboa C Piscine Projects, February 2022.
 
-Piscine projects may contain errors, if you are/were a pisciner you will understand it ;)
+Some project may contain errors.
+If you're a pisciner you will understand why. ;)
 
-Keep swimming!
+Keep swiming!
